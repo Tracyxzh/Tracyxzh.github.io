@@ -6,17 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: travel | 小章鱼的blog</title>
+  <title>java 面试遇到的问题 | 小章鱼的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直快乐的鱼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小章鱼的blog">
-<meta property="og:url" content="http://yoursite.com/categories/travel/index.html">
+  <meta name="description" content="前言：突然发现我现在写blog喜欢写些原因，最近有可能是在图书馆听着民谣，效率更高吧。我写这个就是想着把自己面试遇到的一些小问题整理下，方便自己以后看看，以方便以后别人面试的时候遇到。
+java 初始化块、静态初始化块、构造函数初始化理解Java中的类初始化
+static 关键字
+当声明一个事物为static时，就意味着这个域或方法不会与包含它的类的任何对象实例关联在一起。
+即使从未创建某个类的任">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java 面试遇到的问题">
+<meta property="og:url" content="http://yoursite.com/2017/02/28/javaPaper/index.html">
 <meta property="og:site_name" content="小章鱼的blog">
-<meta property="og:description" content="一直快乐的鱼">
+<meta property="og:description" content="前言：突然发现我现在写blog喜欢写些原因，最近有可能是在图书馆听着民谣，效率更高吧。我写这个就是想着把自己面试遇到的一些小问题整理下，方便自己以后看看，以方便以后别人面试的时候遇到。
+java 初始化块、静态初始化块、构造函数初始化理解Java中的类初始化
+static 关键字
+当声明一个事物为static时，就意味着这个域或方法不会与包含它的类的任何对象实例关联在一起。
+即使从未创建某个类的任">
+<meta property="og:updated_time" content="2017-02-28T12:08:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小章鱼的blog">
-<meta name="twitter:description" content="一直快乐的鱼">
+<meta name="twitter:title" content="java 面试遇到的问题">
+<meta name="twitter:description" content="前言：突然发现我现在写blog喜欢写些原因，最近有可能是在图书馆听着民谣，效率更高吧。我写这个就是想着把自己面试遇到的一些小问题整理下，方便自己以后看看，以方便以后别人面试的时候遇到。
+java 初始化块、静态初始化块、构造函数初始化理解Java中的类初始化
+static 关键字
+当声明一个事物为static时，就意味着这个域或方法不会与包含它的类的任何对象实例关联在一起。
+即使从未创建某个类的任">
   
     <link rel="alternative" href="/atom.xml" title="小章鱼的blog" type="application/atom+xml">
   
@@ -148,36 +161,92 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-javaPaper" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/17/reading/" class="archive-article-date">
-  	<time datetime="2017-02-17T06:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/17/reading/">学习资料记录</a>
+    <h1 class="article-title" itemprop="name">
+      java 面试遇到的问题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/02/28/javaPaper/" class="archive-article-date">
+  	<time datetime="2017-02-28T04:56:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：突然发现我现在写blog喜欢写些原因，最近有可能是在图书馆听着民谣，效率更高吧。我写这个就是想着把自己面试遇到的一些小问题整理下，方便自己以后看看，以方便以后别人面试的时候遇到。</p>
+<h2 id="java-初始化块、静态初始化块、构造函数初始化"><a href="#java-初始化块、静态初始化块、构造函数初始化" class="headerlink" title="java 初始化块、静态初始化块、构造函数初始化"></a>java 初始化块、静态初始化块、构造函数初始化</h2><p><a href="https://www.caoqq.net/java-class-initialization.html" target="_blank" rel="external">理解Java中的类初始化</a></p>
+<h2 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h2><ul>
+<li>当声明一个事物为static时，就意味着这个域或方法不会与包含它的类的任何对象实例关联在一起。</li>
+<li>即使从未创建某个类的任何对象，也可以调用其static方法或访问其static域</li>
+</ul>
+<a id="more"></a>
+<h2 id="equals-和"><a href="#equals-和" class="headerlink" title="equals 和 =="></a>equals 和 ==</h2><p>在Object中，使用equals方法和使用“==”运算符是完全等价的，不过许多类重写了Object类的equals方法，String类也是如此。重写后比较的是值而不是地址。</p>
+<p>注意：</p>
+<ul>
+<li>String类是不可变的，String类一旦创建久不可改变。</li>
+<li>String类采用字符串常量池是合理的，因为String是非可变的，即使多个引用指向同一个String对象，也不会导致一份对象改变影响另外的对象。</li>
+<li>使用String类的场景：在字符串不经常变化的场景中可以使用String类，例如常量的声明、少量的变量运算。</li>
+<li>使用StringBuffer类的场景：在频繁进行字符串运算（如拼接、替换、删除等），并且运行在多线程环境中，则可以考虑使用StringBuffer，例如XML解析、HTTP参数解析和封装。</li>
+<li>使用StringBuilder类的场景：在频繁进行字符串运算（如拼接、替换、和删除等），并且运行在单线程的环境中，则可以考虑使用StringBuilder，如SQL语句的拼装、JSON封装等。</li>
+</ul>
+<h2 id="public-static-void-main-String-args"><a href="#public-static-void-main-String-args" class="headerlink" title="public static void main(String[] args)"></a>public static void main(String[] args)</h2><p>这样定义的原因</p>
+<ul>
+<li>public main方法在程序启动的时候有jvm调用，所以应声明为public</li>
+<li>static 静态方法，方法被调用，要么使用对象实例引用访问，要么声明为static，使用类直接调用。main方法声明为static这样就无需生成对象实例，直接使用jvm调用。</li>
+<li>void 无返回类型</li>
+<li>String[] args 用户输入参数</li>
+</ul>
+<h2 id="java-8种基本数据类型"><a href="#java-8种基本数据类型" class="headerlink" title="java 8种基本数据类型"></a>java 8种基本数据类型</h2><ul>
+<li>byte    字节型  8位</li>
+<li>char    字符型  16位</li>
+<li>short   短整型  16位</li>
+<li>int     整型    32位</li>
+<li>long    长整型  64位</li>
+<li>float   浮点型  32位</li>
+<li>double  双浮点型  64位</li>
+<li>boolean 布尔型    true false</li>
+</ul>
+<h2 id="包装类-拆装箱问题"><a href="#包装类-拆装箱问题" class="headerlink" title="包装类 拆装箱问题"></a>包装类 拆装箱问题</h2><p>java中的基本数据类型不是对象，因为这些数据使用简便，如果作为对象处理，每次使用都需要在堆上分配空间，然后在不需要的时候由垃圾回收器来清理，会照成很大的资源浪费。</p>
+<p>解决的是将基本数据类型和包装类的转换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">HashMap&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;(); // HashMap&lt;String, int&gt; map = new HashMap&lt;String, int&gt;(); 会报错误</div><div class="line">map.put(&quot;test1&quot;, 11);</div><div class="line">map.put(&quot;test2&quot;, 12);</div><div class="line"></div><div class="line">for (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) &#123;</div><div class="line">    System.out.println(&quot;key:&quot; + entry.getKey() + &quot; value:&quot; + entry.getValue());</div><div class="line">&#125;</div><div class="line"></div><div class="line">long t = System.currentTimeMillis();</div><div class="line">Long sum = 0L;</div><div class="line">for (long i = 0; i &lt; Integer.MAX_VALUE; i++) &#123;</div><div class="line">    sum += i;</div><div class="line">&#125;</div><div class="line">System.out.println(&quot;total:&quot; + sum);</div><div class="line">System.out.println(&quot;processing time: &quot; + (System.currentTimeMillis() - t) + &quot; ms&quot;);</div><div class="line"></div><div class="line">long t1 = System.currentTimeMillis();</div><div class="line">long sum1 = 0L;</div><div class="line">for (long i = 0; i &lt; Integer.MAX_VALUE; i++) &#123;</div><div class="line">    sum1 += i;</div><div class="line">&#125;</div><div class="line">System.out.println(&quot;total:&quot; + sum1);</div><div class="line">System.out.println(&quot;processing time: &quot; + (System.currentTimeMillis() - t1) + &quot; ms&quot;);</div></pre></td></tr></table></figure></p>
+<p><a href="http://blog.oneapm.com/apm-tech/635.html" target="_blank" rel="external">blog</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>《java编程思想》<br>《细说java》<br><a href="http://docs.oracle.com/javase/8/docs/api/index.html" target="_blank" rel="external">jdk8</a><br><a href="https://www.zhihu.com/question/20101840" target="_blank" rel="external">知乎</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,150 +260,127 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">reading</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/travel/" class="article-tag-list-link color2">travel</a>
+        			<a href="/categories/java/" class="article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/02/28/javaPaper/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/07/thailand01/" class="archive-article-date">
-  	<time datetime="2017-02-07T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/07/thailand01/">泰国游记第一天</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">travel</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">thailand</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/travel/" class="article-tag-list-link color2">travel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/04/thailand00/" class="archive-article-date">
-  	<time datetime="2017-02-04T15:44:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/04/thailand00/">泰国游记序言</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">travel</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">thailand</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/travel/" class="article-tag-list-link color2">travel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/02/27/jvm/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">初步接触jvm</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="javaPaper" data-title="java 面试遇到的问题" data-url="http://yoursite.com/2017/02/28/javaPaper/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
   
 
-    
+
+
 
 
           </div>
@@ -357,10 +403,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,

@@ -18,7 +18,7 @@
 <meta property="og:description" content="ps：本来最近在弄nginx方面的东西，结果接到了SAP的电话面试，面试的java方面的知识，感觉自己对于jvm方面的知识了解有限，所以决定学习下jvm，刚好前段时间看到了《初探java虚拟机》这本书，那么接下来的学习笔记基本是以这本书为材料。
 虚拟机的基本结构
 虚拟机架构类加载子系统负责从文件系统或者网络中加载Class信息，加载的类信息存放于一块称为方法区的内存空间。方法区还存放运行时常量池信">
-<meta property="og:updated_time" content="2017-02-27T13:40:05.000Z">
+<meta property="og:updated_time" content="2017-02-28T11:15:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初步接触jvm">
 <meta name="twitter:description" content="ps：本来最近在弄nginx方面的东西，结果接到了SAP的电话面试，面试的java方面的知识，感觉自己对于jvm方面的知识了解有限，所以决定学习下jvm，刚好前段时间看到了《初探java虚拟机》这本书，那么接下来的学习笔记基本是以这本书为材料。
@@ -181,12 +181,12 @@
 </ul>
 <p>java堆在虚拟机启动的时候建立，它是java程序最重要的内存工作区域。几乎所有的实例都放在java堆中。堆空间是线程共享的，这是一块与java应用密切相关的内存区间。</p>
 <p>java的NIO库允许java程序使用直接内存。直接内存是在java堆外的、直接向系统申请的内存空间。通常直接内存的速度会优于java堆。由于直接内存在java堆外，因此它的大小不会直接受限于Xmx指定的最大堆大小，但是系统内存是有限的，java堆和直接内存的总和依然受限于操作系统能给的最大内存。</p>
+<a id="more"></a>
 <p>垃圾回收系统是java虚拟机的重要组成部分，垃圾回收器可以对方法区、java堆和直接内存进行回收。其中，java堆是垃圾收集器的工作重点。和c/c++不同，java中所有的对象空间释放都是隐式的。对于不再使用的垃圾对象，垃圾回收系统会在后台默默工作，默默查找、标识并释放垃圾对象，完成java堆、方法区和直接内存的全自动化管理。</p>
 <p>每一个java虚拟机线程都有一个私有的java栈。一个线程的java栈在创建的时候被创建。java栈中保存着局部变量、方法参数，同时和java方法的调用、返回密切。</p>
 <p>本地方法栈和java栈非常相似，最大的不同在于java栈用于java方法的调用，而本地方法栈则用于本地方法调用。作为对java虚拟机的重要扩展，java虚拟机允许java直接调用本地方法（通常使用c编写）。</p>
 <p>PC(program counter)寄存器也是每个线程私有的空间，java虚拟机会为每一个java线程创建PC寄存器。在任意时刻，一个java线程总是在执行一个方法，这个正在执行的方法成为当前方法。如果当前方法不是本地方法，pc寄存器就会指向当前正在执行的指令。如果当前方法是本地方法，那么pc寄存器的值就是undefined。</p>
 <p>执行引擎室java虚拟机的核心组件之一，负责执行虚拟机的字节码。</p>
-<a id="more"></a>
 <ul>
 <li>函数调用：出入java栈</li>
 </ul>
@@ -195,6 +195,14 @@
 <ul>
 <li>局部变量表<br>局部变量表时栈帧的重要组成部分。用于保存函数的参数以及局部变量。局部变量只在当前函数中有效，当函数调用结束以后，随着函数栈帧的销毁，局部变量也会随之销毁。<br>只要局部变量表中直接或间接引用的对象都是不会回收的。因此，理解局部变量表对理解垃圾回收有一定帮助。</li>
 </ul>
+<h2 id="Class文件结构"><a href="#Class文件结构" class="headerlink" title="Class文件结构"></a>Class文件结构</h2><ul>
+<li>文件以一个4字节的Magic开头，紧跟着两个大小版本号</li>
+<li>在版本号之后是常量池，常量池的个数位constant_pool_count。</li>
+<li>常量池之后是类的访问修饰符、代表自身类的引用、父类引用以及接口数量和实现的接口引用。</li>
+<li>在接口之后，有字段数量和字段描述、方法数量以及方法描述。</li>
+<li>最后放着类文件的属性信息。</li>
+</ul>
+<p>注意：高版本的java虚拟机可以执行由低版本编译器生成的Class文件，但是低版本的java虚拟机不能执行高版本编译器生成的Class文件。</p>
 <h2 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h2><p>《初探Java虚拟机》</p>
 
       
@@ -318,6 +326,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/02/28/javaPaper/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          java 面试遇到的问题
+        
+      </div>
+    </a>
   
   
     <a href="/2017/02/27/nginx/" id="article-nav-older" class="article-nav-link-wrap">
@@ -456,15 +473,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">paln</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,19 +497,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">paln</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,7 +517,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,7 +529,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -150,6 +150,99 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javaPaper" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/javaPaper/">java 面试遇到的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/javaPaper/" class="archive-article-date">
+  	<time datetime="2017-02-28T04:56:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前言：突然发现我现在写blog喜欢写些原因，最近有可能是在图书馆听着民谣，效率更高吧。我写这个就是想着把自己面试遇到的一些小问题整理下，方便自己以后看看，以方便以后别人面试的时候遇到。</p>
+<h2 id="java-初始化块、静态初始化块、构造函数初始化"><a href="#java-初始化块、静态初始化块、构造函数初始化" class="headerlink" title="java 初始化块、静态初始化块、构造函数初始化"></a>java 初始化块、静态初始化块、构造函数初始化</h2><p><a href="https://www.caoqq.net/java-class-initialization.html">理解Java中的类初始化</a></p>
+<h2 id="static-关键字"><a href="#static-关键字" class="headerlink" title="static 关键字"></a>static 关键字</h2><ul>
+<li>当声明一个事物为static时，就意味着这个域或方法不会与包含它的类的任何对象实例关联在一起。</li>
+<li>即使从未创建某个类的任何对象，也可以调用其static方法或访问其static域</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/02/28/javaPaper/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java/" class="article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/javaPaper/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-jvm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -176,11 +269,6 @@
 </ul>
 <p>java堆在虚拟机启动的时候建立，它是java程序最重要的内存工作区域。几乎所有的实例都放在java堆中。堆空间是线程共享的，这是一块与java应用密切相关的内存区间。</p>
 <p>java的NIO库允许java程序使用直接内存。直接内存是在java堆外的、直接向系统申请的内存空间。通常直接内存的速度会优于java堆。由于直接内存在java堆外，因此它的大小不会直接受限于Xmx指定的最大堆大小，但是系统内存是有限的，java堆和直接内存的总和依然受限于操作系统能给的最大内存。</p>
-<p>垃圾回收系统是java虚拟机的重要组成部分，垃圾回收器可以对方法区、java堆和直接内存进行回收。其中，java堆是垃圾收集器的工作重点。和c/c++不同，java中所有的对象空间释放都是隐式的。对于不再使用的垃圾对象，垃圾回收系统会在后台默默工作，默默查找、标识并释放垃圾对象，完成java堆、方法区和直接内存的全自动化管理。</p>
-<p>每一个java虚拟机线程都有一个私有的java栈。一个线程的java栈在创建的时候被创建。java栈中保存着局部变量、方法参数，同时和java方法的调用、返回密切。</p>
-<p>本地方法栈和java栈非常相似，最大的不同在于java栈用于java方法的调用，而本地方法栈则用于本地方法调用。作为对java虚拟机的重要扩展，java虚拟机允许java直接调用本地方法（通常使用c编写）。</p>
-<p>PC(program counter)寄存器也是每个线程私有的空间，java虚拟机会为每一个java线程创建PC寄存器。在任意时刻，一个java线程总是在执行一个方法，这个正在执行的方法成为当前方法。如果当前方法不是本地方法，pc寄存器就会指向当前正在执行的指令。如果当前方法是本地方法，那么pc寄存器的值就是undefined。</p>
-<p>执行引擎室java虚拟机的核心组件之一，负责执行虚拟机的字节码。</p>
         
           <a class="article-more-a" href="/2017/02/27/jvm/#more">more >></a>
         
@@ -568,15 +656,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
         		</li>
       		
 		</ul>
@@ -669,11 +757,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
@@ -758,11 +846,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -829,7 +917,7 @@
         <p>这里记录下每个阶段的学习资料</p>
 <p>##java 多线程和并发<br><a href="http://wiki.jikexueyuan.com/project/java-concurrent/thread-communication.html" target="_blank" rel="external">java 并发性和多线程</a><br><a href="http://ifeve.com/" target="_blank" rel="external">并发编程网</a><br><a href="http://docs.oracle.com/javase/8/docs/api/index.html" target="_blank" rel="external">JDK8</a><br><a href="http://download.java.net/jdk/jdk-api-localizations/jdk-api-zh-cn/builds/latest/html/zh_CN/api/" target="_blank" rel="external">JDK6</a></p>
 <p><a href="http://lycy521.blog.51cto.com/3492922/1333172" target="_blank" rel="external">mysql 忘记 root 密码</a></p>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>《Mysql快速入门》 纸质书籍<br>《事务处理的技术和概念》 这个学习的文档使电子书籍</p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>《Mysql快速入门》 纸质书籍<br>《事务处理的技术和概念》 这个学习的文档使电子书籍<br>《java编程思想》 纸质书籍</p>
 
       
 
@@ -973,91 +1061,6 @@
 
 
   
-    <article id="post-thailand00" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/04/thailand00/">泰国游记序言</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/04/thailand00/" class="archive-article-date">
-  	<time datetime="2017-02-04T15:44:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是一次真正意义上的说走就走的旅行，当我看到我同门师弟（其实也不算师弟，我们同届，只是他晚来几天^-^）在买飞机票的时候我就好奇的问了句“去哪里玩吗？”同时回了句“我也去可以？”。就这样的两个问句开始我2017年的第一次旅游，同时也是我的第一次出国游，同时也完成了我许许多多的第一次。<br>最最重要的使这是我第一次写游记，本来没这种兴趣的，但是不知道怎么就在手机上写了一些简单的记录，回来了也就想着干脆写游记吧。毕竟这一路上自己也遇到了一些坑，就当给别人一些参考也好，而且一边写着一边回忆起旅游的乐事，真的很有意思，有的时候都会笑出来声来。</p>
-<p>首先简单介绍一下一起出行的6个人。</p>
-        
-          <a class="article-more-a" href="/2017/02/04/thailand00/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">travel</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">thailand</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/travel/" class="article-tag-list-link color2">travel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/04/thailand00/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1164,15 +1167,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">paln</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1184,19 +1191,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">paln</a>
+                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1208,7 +1211,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,7 +1223,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
