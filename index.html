@@ -83,6 +83,8 @@
 		        
 					<a class="twitter" target="_blank" href="#" title="twitter"><i class="icon-twitter"></i></a>
 		        
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=412016547&auto=1&height=32"></iframe			<ul>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -254,7 +256,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="TreeMap-实现了red-black树结构"><a href="#TreeMap-实现了red-black树结构" class="headerlink" title="TreeMap 实现了red-black树结构"></a>TreeMap 实现了red-black树结构</h2>
+        <h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><p>特点：</p>
+<ul>
+<li>实现了red 实现了red-black树结构。</li>
+<li>查找、插入和删除的时间复杂度是 $log\left ( n \right )$。</li>
+<li>TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上下。</li>
+<li>元素按照键的顺序存储。</li>
+</ul>
+<h2 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h2><p>《数据结构和java集合框架》</p>
+
       
 
       
@@ -727,7 +737,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
+        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -909,15 +919,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
         		</li>
       		
 		</ul>
@@ -957,19 +967,19 @@
 
 
   
-    <article id="post-transction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mysql2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/19/transction/">数据库学习笔记一</a>
+      <a class="article-title" href="/2017/02/19/mysql2/">数据库学习笔记二</a>
     </h1>
   
 
         
-        <a href="/2017/02/19/transction/" class="archive-article-date">
+        <a href="/2017/02/19/mysql2/" class="archive-article-date">
   	<time datetime="2017-02-19T14:45:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
 </a>
         
@@ -977,14 +987,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><p>连接是把不同表的记录连到一起的最普遍的方法。</p>
+        <h2 id="Mysql-视图"><a href="#Mysql-视图" class="headerlink" title="Mysql 视图"></a>Mysql 视图</h2><p>概念： 视图可以包含表中的所有列，或者仅包含选定的列。视图可以创建自一个或者多个表，这取决于创建该视图的 SQL 语句的写法。视图，是一种虚拟的表，数据库只存放了视图的定义，并没有存放视图中的数据。<br>优点：用户可以不用看到整个数据库表中的数据，而只关心对自己有用的数据即可。</p>
+<p>作用：</p>
 <ul>
-<li>内连接：最普遍的连接类型，而且是最匀称的，因为它们要求构成连接的每一个部分的每个表匹配，不匹配的行将被排除。</li>
-<li>外连接：使用outer join关键字将两个表连接起来。外连接生成的结果集不仅包括符合链接条件的行数据，而且还包括左表（左外连接）、右表（右边连接时的表）或两边链接表（全外连接时的表）中所有的数据行。</li>
+<li>简单性：所见即所需</li>
+<li>安全性：授权</li>
+<li>逻辑数据独立性：程序与数据库独立</li>
 </ul>
-<h2 id="合并查询"><a href="#合并查询" class="headerlink" title="合并查询"></a>合并查询</h2><p>合并查询结果是将多个select语句的查询结果合并在一起。因为某种情况下，需要将几个select语句查询出来的结果合并起来显示。合并查询结果使用union和union all关键字。union关键字是将所有的查询结果合并在一起，然后去除相同记录；而union all关键字则只是简单地将结果合并在一起。</p>
+<p>视图与查询的区别：</p>
+<p>视图和查询都是用由sql语句组成,这是他们相同的地方,但是视图和查询有着本质区别：<br>它们的区别在于：</p>
+<ul>
+<li>存储上的区别：视图存储为数据库设计的一部分,而查询则不是</li>
+<li>更新限制的要求不一样<br>要注意：因为视图来自于表,所以通过视图可以间接对表进行更新,我们也可以通过update语句对表进行更新,但是对视图和查询更新限制是不同的,</li>
+<li>排序结果：通过sql语句,可以对一个表进行排序,而视图则不行。</li>
+</ul>
         
-          <a class="article-more-a" href="/2017/02/19/transction/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/19/mysql2/#more">more >></a>
         
       
 
@@ -1008,10 +1026,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事务处理</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -1031,7 +1045,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/19/transction/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/19/mysql2/">展开全文 >></a>
         </p>
       
 
@@ -1168,11 +1182,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
+                <a href="javascript:void(0)" class="js-tag color5">paln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1180,7 +1194,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">paln</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1196,11 +1210,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1208,7 +1222,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1221,18 +1247,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reading</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">

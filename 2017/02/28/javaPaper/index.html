@@ -22,7 +22,7 @@ java 初始化块、静态初始化块、构造函数初始化理解Java中的�
 static 关键字
 当声明一个事物为static时，就意味着这个域或方法不会与包含它的类的任何对象实例关联在一起。
 即使从未创建某个类的任">
-<meta property="og:updated_time" content="2017-03-01T14:40:02.000Z">
+<meta property="og:updated_time" content="2017-03-02T11:47:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java 面试遇到的问题">
 <meta name="twitter:description" content="前言：突然发现我现在写blog喜欢写些原因，最近有可能是在图书馆听着民谣，效率更高吧。我写这个就是想着把自己面试遇到的一些小问题整理下，方便自己以后看看，以方便以后别人面试的时候遇到。
@@ -95,6 +95,8 @@ static 关键字
 					<a class="weibo" target="_blank" href="http://weibo.com/u/2613217637/home?wvr=5&lf=reg" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="twitter" target="_blank" href="#" title="twitter"><i class="icon-twitter"></i></a>
+		        
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=412016547&auto=1&height=32"></iframe			<ul>
 		        
 			</div>
 		</nav>
@@ -216,15 +218,7 @@ static 关键字
 </ul>
 <h2 id="包装类-拆装箱问题"><a href="#包装类-拆装箱问题" class="headerlink" title="包装类 拆装箱问题"></a>包装类 拆装箱问题</h2><p>java中的基本数据类型不是对象，因为这些数据使用简便，如果作为对象处理，每次使用都需要在堆上分配空间，然后在不需要的时候由垃圾回收器来清理，会照成很大的资源浪费。</p>
 <p>解决的是将基本数据类型和包装类的转换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">HashMap&lt;String, Integer&gt; map = new HashMap&lt;String, Integer&gt;(); // HashMap&lt;String, int&gt; map = new HashMap&lt;String, int&gt;(); 会报错误</div><div class="line">map.put(&quot;test1&quot;, 11);</div><div class="line">map.put(&quot;test2&quot;, 12);</div><div class="line"></div><div class="line">for (Map.Entry&lt;String, Integer&gt; entry : map.entrySet()) &#123;</div><div class="line">    System.out.println(&quot;key:&quot; + entry.getKey() + &quot; value:&quot; + entry.getValue());</div><div class="line">&#125;</div><div class="line"></div><div class="line">long t = System.currentTimeMillis();</div><div class="line">Long sum = 0L;</div><div class="line">for (long i = 0; i &lt; Integer.MAX_VALUE; i++) &#123;</div><div class="line">    sum += i;</div><div class="line">&#125;</div><div class="line">System.out.println(&quot;total:&quot; + sum);</div><div class="line">System.out.println(&quot;processing time: &quot; + (System.currentTimeMillis() - t) + &quot; ms&quot;);</div><div class="line"></div><div class="line">long t1 = System.currentTimeMillis();</div><div class="line">long sum1 = 0L;</div><div class="line">for (long i = 0; i &lt; Integer.MAX_VALUE; i++) &#123;</div><div class="line">    sum1 += i;</div><div class="line">&#125;</div><div class="line">System.out.println(&quot;total:&quot; + sum1);</div><div class="line">System.out.println(&quot;processing time: &quot; + (System.currentTimeMillis() - t1) + &quot; ms&quot;);</div></pre></td></tr></table></figure></p>
-<h2 id="java-流"><a href="#java-流" class="headerlink" title="java 流"></a>java 流</h2><p>流向：</p>
-<ul>
-<li>输入流：</li>
-<li>输出流：</li>
-<li>字节流：</li>
-<li>字符流：</li>
-<li>节点流：</li>
-<li>过滤流：</li>
-</ul>
+<h2 id="java-流"><a href="#java-流" class="headerlink" title="java 流"></a>java 流</h2><p>InputStream OutputStream 8位 操作二进制数据<br>Reader Writer 16位 以Unicode字符为单位从stream读取或往stream写入<br>InputStreamReader 将InputStream转换为Reader<br>OutputStreamWriter 将OutputStream转换为Writer<br>1.标准输入输出 2.文件操作 3.网络上数据流 4.字符串流 5.对象流 6.zip文件流</p>
 <p><a href="http://blog.oneapm.com/apm-tech/635.html" target="_blank" rel="external">blog</a></p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>《java编程思想》<br>《细说java》<br><a href="http://docs.oracle.com/javase/8/docs/api/index.html" target="_blank" rel="external">jdk8</a><br><a href="https://www.zhihu.com/question/20101840" target="_blank" rel="external">知乎</a></p>
 
@@ -371,6 +365,7 @@ static 关键字
   
 </nav>
 
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=412016547&auto=1&height=66"></iframe>
 
 
 
@@ -512,11 +507,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
+                <a href="javascript:void(0)" class="js-tag color5">paln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,7 +519,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">paln</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -540,11 +535,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,7 +547,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,18 +572,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reading</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
