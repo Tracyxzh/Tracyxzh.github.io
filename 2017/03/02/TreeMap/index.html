@@ -6,39 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>TreeMap 和 TreeSet | 小章鱼的blog</title>
+  <title>二叉查找树 | 小章鱼的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="TreeMap特点：
-
-实现了red 实现了red-black树结构。
-查找、插入和删除的时间复杂度是 $log\left ( n \right )$。
-TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上下。
-元素按照键的顺序存储。
-
-参考书籍《数据结构和java集合框架》">
+  <meta name="description" content="前言本来是准备了解下HashMap特点的，最后又看到源码，然后就想知道底层原理是什么。发现又遇到了红黑树这个概念，以前一直有遇到，但是每次看了一点点就放弃了。有句话不是说：今生的是一个回首是因为上辈子500次插肩而过。我得到的结论就是如果想撩到自己喜欢的妹子，那就要多几次插肩而过，所以我决定和二叉查找树，多联络联络感情。😂😂😂
+特点：二叉查找树满足按序搜索的性质，即对于树中的每个节点X，所有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TreeMap 和 TreeSet">
+<meta property="og:title" content="二叉查找树">
 <meta property="og:url" content="http://yoursite.com/2017/03/02/TreeMap/index.html">
 <meta property="og:site_name" content="小章鱼的blog">
-<meta property="og:description" content="TreeMap特点：
-
-实现了red 实现了red-black树结构。
-查找、插入和删除的时间复杂度是 $log\left ( n \right )$。
-TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上下。
-元素按照键的顺序存储。
-
-参考书籍《数据结构和java集合框架》">
-<meta property="og:updated_time" content="2017-03-02T11:59:17.000Z">
+<meta property="og:description" content="前言本来是准备了解下HashMap特点的，最后又看到源码，然后就想知道底层原理是什么。发现又遇到了红黑树这个概念，以前一直有遇到，但是每次看了一点点就放弃了。有句话不是说：今生的是一个回首是因为上辈子500次插肩而过。我得到的结论就是如果想撩到自己喜欢的妹子，那就要多几次插肩而过，所以我决定和二叉查找树，多联络联络感情。😂😂😂
+特点：二叉查找树满足按序搜索的性质，即对于树中的每个节点X，所有">
+<meta property="og:updated_time" content="2017-03-07T12:23:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TreeMap 和 TreeSet">
-<meta name="twitter:description" content="TreeMap特点：
-
-实现了red 实现了red-black树结构。
-查找、插入和删除的时间复杂度是 $log\left ( n \right )$。
-TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上下。
-元素按照键的顺序存储。
-
-参考书籍《数据结构和java集合框架》">
+<meta name="twitter:title" content="二叉查找树">
+<meta name="twitter:description" content="前言本来是准备了解下HashMap特点的，最后又看到源码，然后就想知道底层原理是什么。发现又遇到了红黑树这个概念，以前一直有遇到，但是每次看了一点点就放弃了。有句话不是说：今生的是一个回首是因为上辈子500次插肩而过。我得到的结论就是如果想撩到自己喜欢的妹子，那就要多几次插肩而过，所以我决定和二叉查找树，多联络联络感情。😂😂😂
+特点：二叉查找树满足按序搜索的性质，即对于树中的每个节点X，所有">
   
     <link rel="alternative" href="/atom.xml" title="小章鱼的blog" type="application/atom+xml">
   
@@ -105,8 +87,7 @@ TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上�
 		        
 					<a class="twitter" target="_blank" href="#" title="twitter"><i class="icon-twitter"></i></a>
 		        
-		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=412016547&auto=1&height=32"></iframe			<ul>
-		        
+		        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=412016547&auto=1&height=32"></iframe>
 			</div>
 		</nav>
 	</header>		
@@ -179,7 +160,7 @@ TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上�
         
   
     <h1 class="article-title" itemprop="name">
-      TreeMap 和 TreeSet
+      二叉查找树
     </h1>
   
 
@@ -192,14 +173,25 @@ TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><p>特点：</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本来是准备了解下HashMap特点的，最后又看到源码，然后就想知道底层原理是什么。发现又遇到了红黑树这个概念，以前一直有遇到，但是每次看了一点点就放弃了。有句话不是说：今生的是一个回首是因为上辈子500次插肩而过。我得到的结论就是如果想撩到自己喜欢的妹子，那就要多几次插肩而过，所以我决定和二叉查找树，多联络联络感情。😂😂😂</p>
+<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><p>二叉查找树满足按序搜索的性质，即对于树中的每个节点X，所有在X左子树中的元素的键值都比X的键值小，所有在X右子树中元素的键值逗逼X的键值要大。</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ul>
+<li>find：从根开始，根据比较的结果，走左分支或右分支</li>
+<li>findMin操作时只要有左孩子就搜索左分支，findMax也是类似。 </li>
+<li>remove操作时很困难的，因为非叶子结点奖树连接在一起，而我们不希望断开这棵树<ul>
+<li>如果一个结点只有一个孩子，通过让它的父节点跳过它来删除它。</li>
+<li>删除一个具有两个孩子的节点，只要用它右子树中最小的项来代替它。然后删除原来的右子树的最小节点。</li>
+</ul>
+</li>
+</ul>
+<h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h2><p>特点：</p>
 <ul>
 <li>实现了red 实现了red-black树结构。</li>
 <li>查找、插入和删除的时间复杂度是 $log\left ( n \right )$。</li>
 <li>TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上下。</li>
 <li>元素按照键的顺序存储。</li>
 </ul>
-<h2 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h2><p>《数据结构和java集合框架》</p>
+<h2 id="红黑树-（red-black-tree）"><a href="#红黑树-（red-black-tree）" class="headerlink" title="红黑树 （red-black-tree）"></a>红黑树 （red-black-tree）</h2><h2 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a>参考书籍</h2><p>《数据结构和java集合框架》</p>
 
       
 
@@ -238,11 +230,15 @@ TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上�
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">TreeMap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Tree</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -340,7 +336,6 @@ TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上�
   
 </nav>
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=412016547&auto=1&height=66"></iframe>
 
 
 
@@ -349,7 +344,7 @@ TreeMap 对象这方面比BinSearchTree对象高级，与AVLTree对象不相上�
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="TreeMap" data-title="TreeMap 和 TreeSet" data-url="http://yoursite.com/2017/03/02/TreeMap/"></div>
+	<div class="ds-thread" data-thread-key="TreeMap" data-title="二叉查找树" data-url="http://yoursite.com/2017/03/02/TreeMap/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -470,15 +465,7 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">TreeMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -486,19 +473,31 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">paln</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">paln</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hash</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -514,15 +513,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">

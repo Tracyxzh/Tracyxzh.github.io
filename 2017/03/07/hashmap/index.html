@@ -6,17 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: 数据库 | 小章鱼的blog</title>
+  <title>hashmap 源码分析 | 小章鱼的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直快乐的鱼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小章鱼的blog">
-<meta property="og:url" content="http://yoursite.com/categories/数据库/index.html">
+  <meta name="description" content="前言我发现了，写博客什么的最有意思的时候还是写前言来的开心。反正就是瞎嗨为什么动笔。为什么写这个是因为今天面试的时候问当了下面这段代码中构造函数中的参数数是干嘛用的，问这个问题我当时很羞愧，其实有的时候自己也会去问为什么有这么多构造函数，具体应用场景是什么，然后就是没有刨根问底的精神。现在我就来刨根问底下也不晚吧，😂
+所问代码可以看到构造函数中都可以传入参数
+
+threshold：阈值，用于判断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hashmap 源码分析">
+<meta property="og:url" content="http://yoursite.com/2017/03/07/hashmap/index.html">
 <meta property="og:site_name" content="小章鱼的blog">
-<meta property="og:description" content="一直快乐的鱼">
+<meta property="og:description" content="前言我发现了，写博客什么的最有意思的时候还是写前言来的开心。反正就是瞎嗨为什么动笔。为什么写这个是因为今天面试的时候问当了下面这段代码中构造函数中的参数数是干嘛用的，问这个问题我当时很羞愧，其实有的时候自己也会去问为什么有这么多构造函数，具体应用场景是什么，然后就是没有刨根问底的精神。现在我就来刨根问底下也不晚吧，😂
+所问代码可以看到构造函数中都可以传入参数
+
+threshold：阈值，用于判断">
+<meta property="og:image" content="http://yoursite.com/2017/03/07/hashmap/gouzao.png">
+<meta property="og:updated_time" content="2017-03-07T14:26:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小章鱼的blog">
-<meta name="twitter:description" content="一直快乐的鱼">
+<meta name="twitter:title" content="hashmap 源码分析">
+<meta name="twitter:description" content="前言我发现了，写博客什么的最有意思的时候还是写前言来的开心。反正就是瞎嗨为什么动笔。为什么写这个是因为今天面试的时候问当了下面这段代码中构造函数中的参数数是干嘛用的，问这个问题我当时很羞愧，其实有的时候自己也会去问为什么有这么多构造函数，具体应用场景是什么，然后就是没有刨根问底的精神。现在我就来刨根问底下也不晚吧，😂
+所问代码可以看到构造函数中都可以传入参数
+
+threshold：阈值，用于判断">
+<meta name="twitter:image" content="http://yoursite.com/2017/03/07/hashmap/gouzao.png">
   
     <link rel="alternative" href="/atom.xml" title="小章鱼的blog" type="application/atom+xml">
   
@@ -149,140 +161,194 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-hashmap" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/19/mysql2/" class="archive-article-date">
-  	<time datetime="2017-02-19T14:45:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/19/mysql2/">数据库学习笔记二</a>
+    <h1 class="article-title" itemprop="name">
+      hashmap 源码分析
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/07/hashmap/" class="archive-article-date">
+  	<time datetime="2017-03-07T13:49:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我发现了，写博客什么的最有意思的时候还是写前言来的开心。反正就是瞎嗨为什么动笔。为什么写这个是因为今天面试的时候问当了下面这段代码中构造函数中的参数数是干嘛用的，问这个问题我当时很羞愧，其实有的时候自己也会去问为什么有这么多构造函数，具体应用场景是什么，然后就是没有刨根问底的精神。现在我就来刨根问底下也不晚吧，😂</p>
+<h2 id="所问代码"><a href="#所问代码" class="headerlink" title="所问代码"></a>所问代码</h2><p>可以看到构造函数中都可以传入参数<br><img src="/2017/03/07/hashmap/gouzao.png" alt="HashMap构造函数"></p>
+<ul>
+<li>threshold：阈值，用于判断是否需要调整容量。threshold的值=”容量*加载因子”</li>
+<li>loadFactor：加载因子，通常设为0.75</li>
+</ul>
+<h2 id="HashMap源代码为例子分析"><a href="#HashMap源代码为例子分析" class="headerlink" title="HashMap源代码为例子分析"></a>HashMap源代码为例子分析</h2><p>Java.util.Hashtable类实现了JAVA中的哈希表，内部采用Node[]数组，每个Node均可作为链表的头，用来解决哈希碰撞。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>基于哈希表的 Map 接口的实现。</li>
+<li>允许使用 null 值和 null 键。</li>
+<li>此类不保证映射的顺序。</li>
+</ul>
+<h2 id="Node类-源码"><a href="#Node类-源码" class="headerlink" title="Node类 源码"></a>Node类 源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;</div><div class="line">    final int hash;</div><div class="line">    final K key;</div><div class="line">    V value;</div><div class="line">    Node&lt;K,V&gt; next;</div><div class="line"></div><div class="line">    Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;</div><div class="line">        this.hash = hash;</div><div class="line">        this.key = key;</div><div class="line">        this.value = value;</div><div class="line">        this.next = next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public final K getKey()        &#123; return key; &#125;</div><div class="line">    public final V getValue()      &#123; return value; &#125;</div><div class="line">    public final String toString() &#123; return key + &quot;=&quot; + value; &#125;</div><div class="line"></div><div class="line">    public final int hashCode() &#123;</div><div class="line">        return Objects.hashCode(key) ^ Objects.hashCode(value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public final V setValue(V newValue) &#123;</div><div class="line">        V oldValue = value;</div><div class="line">        value = newValue;</div><div class="line">        return oldValue;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public final boolean equals(Object o) &#123;</div><div class="line">        if (o == this)</div><div class="line">            return true;</div><div class="line">        if (o instanceof Map.Entry) &#123;</div><div class="line">            Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</div><div class="line">            if (Objects.equals(key, e.getKey()) &amp;&amp;</div><div class="line">                Objects.equals(value, e.getValue()))</div><div class="line">                return true;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"> public HashMap(int initialCapacity) &#123;</div><div class="line">    this(initialCapacity, DEFAULT_LOAD_FACTOR);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Constructs an empty &lt;tt&gt;HashMap&lt;/tt&gt; with the default initial capacity</div><div class="line"> * (16) and the default load factor (0.75).</div><div class="line"> */</div><div class="line">public HashMap() &#123;</div><div class="line">    this.loadFactor = DEFAULT_LOAD_FACTOR; // all other fields defaulted</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Constructs a new &lt;tt&gt;HashMap&lt;/tt&gt; with the same mappings as the</div><div class="line"> * specified &lt;tt&gt;Map&lt;/tt&gt;.  The &lt;tt&gt;HashMap&lt;/tt&gt; is created with</div><div class="line"> * default load factor (0.75) and an initial capacity sufficient to</div><div class="line"> * hold the mappings in the specified &lt;tt&gt;Map&lt;/tt&gt;.</div><div class="line"> *</div><div class="line"> * @param   m the map whose mappings are to be placed in this map</div><div class="line"> * @throws  NullPointerException if the specified map is null</div><div class="line"> */</div><div class="line">public HashMap(Map&lt;? extends K, ? extends V&gt; m) &#123;</div><div class="line">    this.loadFactor = DEFAULT_LOAD_FACTOR;</div><div class="line">    putMapEntries(m, false);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h2><p>通常，默认加载因子 (.75) 在时间和空间成本上寻求一种折衷。加载因子过高虽然减少了空间开销，但同时也增加了查询成本（在大多数 HashMap 类的操作中，包括 get 和 put 操作，都反映了这一点）。在设置初始容量时应该考虑到映射中所需的条目数及其加载因子，以便最大限度地减少 rehash 操作次数。如果初始容量大于最大条目数除以加载因子，则不会发生 rehash 操作。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">final Node&lt;K,V&gt;[] resize() &#123;</div><div class="line">    Node&lt;K,V&gt;[] oldTab = table;</div><div class="line">    int oldCap = (oldTab == null) ? 0 : oldTab.length;</div><div class="line">    int oldThr = threshold;</div><div class="line">    int newCap, newThr = 0;</div><div class="line">    if (oldCap &gt; 0) &#123;</div><div class="line">        if (oldCap &gt;= MAXIMUM_CAPACITY) &#123;</div><div class="line">            threshold = Integer.MAX_VALUE;</div><div class="line">            return oldTab;</div><div class="line">        &#125;</div><div class="line">        else if ((newCap = oldCap &lt;&lt; 1) &lt; MAXIMUM_CAPACITY &amp;&amp;</div><div class="line">                 oldCap &gt;= DEFAULT_INITIAL_CAPACITY)</div><div class="line">            newThr = oldThr &lt;&lt; 1; // double threshold</div><div class="line">    &#125;</div><div class="line">    else if (oldThr &gt; 0) // initial capacity was placed in threshold</div><div class="line">        newCap = oldThr;</div><div class="line">    else &#123;               // zero initial threshold signifies using defaults</div><div class="line">        newCap = DEFAULT_INITIAL_CAPACITY;</div><div class="line">        newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</div><div class="line">    &#125;</div><div class="line">    if (newThr == 0) &#123;</div><div class="line">        float ft = (float)newCap * loadFactor;</div><div class="line">        newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (float)MAXIMUM_CAPACITY ?</div><div class="line">                  (int)ft : Integer.MAX_VALUE);</div><div class="line">    &#125;</div><div class="line">    threshold = newThr;</div><div class="line">    @SuppressWarnings(&#123;&quot;rawtypes&quot;,&quot;unchecked&quot;&#125;)</div><div class="line">        Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])new Node[newCap];</div><div class="line">    table = newTab;</div><div class="line">    if (oldTab != null) &#123;</div><div class="line">        for (int j = 0; j &lt; oldCap; ++j) &#123;</div><div class="line">            Node&lt;K,V&gt; e;</div><div class="line">            if ((e = oldTab[j]) != null) &#123;</div><div class="line">                oldTab[j] = null;</div><div class="line">                if (e.next == null)</div><div class="line">                    newTab[e.hash &amp; (newCap - 1)] = e;</div><div class="line">                else if (e instanceof TreeNode)</div><div class="line">                    ((TreeNode&lt;K,V&gt;)e).split(this, newTab, j, oldCap);</div><div class="line">                else &#123; // preserve order</div><div class="line">                    Node&lt;K,V&gt; loHead = null, loTail = null;</div><div class="line">                    Node&lt;K,V&gt; hiHead = null, hiTail = null;</div><div class="line">                    Node&lt;K,V&gt; next;</div><div class="line">                    do &#123;</div><div class="line">                        next = e.next;</div><div class="line">                        if ((e.hash &amp; oldCap) == 0) &#123;</div><div class="line">                            if (loTail == null)</div><div class="line">                                loHead = e;</div><div class="line">                            else</div><div class="line">                                loTail.next = e;</div><div class="line">                            loTail = e;</div><div class="line">                        &#125;</div><div class="line">                        else &#123;</div><div class="line">                            if (hiTail == null)</div><div class="line">                                hiHead = e;</div><div class="line">                            else</div><div class="line">                                hiTail.next = e;</div><div class="line">                            hiTail = e;</div><div class="line">                        &#125;</div><div class="line">                    &#125; while ((e = next) != null);</div><div class="line">                    if (loTail != null) &#123;</div><div class="line">                        loTail.next = null;</div><div class="line">                        newTab[j] = loHead;</div><div class="line">                    &#125;</div><div class="line">                    if (hiTail != null) &#123;</div><div class="line">                        hiTail.next = null;</div><div class="line">                        newTab[j + oldCap] = hiHead;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return newTab;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>jdk8api</li>
+<li>jdk源码</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hash</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/07/hashmap/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/19/transction/" class="archive-article-date">
-  	<time datetime="2017-02-19T14:45:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/19/transction/">数据库学习笔记一</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事务处理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/07/hash/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">几种解决hash碰撞的方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
+
   
-  
-    </div></section>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="hashmap" data-title="hashmap 源码分析" data-url="http://yoursite.com/2017/03/07/hashmap/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
   
 
-    
+
+
 
 
           </div>
@@ -305,10 +371,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
