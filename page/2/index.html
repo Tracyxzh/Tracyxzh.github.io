@@ -151,6 +151,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javahigh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/23/javahigh/">java 算法 （排序算法 冒泡排序）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/23/javahigh/" class="archive-article-date">
+  	<time datetime="2017-02-23T15:02:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p> ps:今天真的是被git弄的稀里糊涂了一天，弄到现在还在实验室，我都怀疑自己的认真劲头了😂。<br> 以前觉得自己没有做技术的耐性，无法静静的呆在自己的电脑前。那个时候坐在电脑前都会流眼泪，那个时候就对自己说：是的我不合适做技术，然而读研的路上感觉自己的性格改变了很多，不敢说非常踏实，但是目前来说，静静地看着技术文档和书籍，常常能获得快感，就像现在已经过了12点，我在“奋笔疾书”。解决bug的时候有那么一丝丝成就感，不知道是不是自己越来越适合做技术了，感觉自己每天过的越来越充实和快乐，只要今天的自己比昨天的自己更强大。</p>
+<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><ul>
+<li>排序算法 分类<ul>
+<li>交换排序<ul>
+<li>冒泡排序</li>
+<li>快速排序</li>
+</ul>
+</li>
+<li>选择排序<ul>
+<li>选择排序</li>
+<li>堆排序</li>
+</ul>
+</li>
+<li>插入排序<ul>
+<li>插入排序</li>
+<li>shell排序</li>
+</ul>
+</li>
+<li>合并排序</li>
+</ul>
+</li>
+</ul>
+<h4 id="冒泡排序（Bubble-Sort）"><a href="#冒泡排序（Bubble-Sort）" class="headerlink" title="冒泡排序（Bubble Sort）"></a>冒泡排序（Bubble Sort）</h4><p>思想：冒泡排序需要遍历多遍数组，在每次遍历🀄比较相邻的元素。较小值像“气泡”一样上浮，较大的值沉向底部。<br>步骤：</p>
+<ul>
+<li>对数组中的各个数据，依次比较相邻的两个数据大小</li>
+<li>如果前面的数据大于后面的数据，就交换两个数据。这样可以找出最小的。</li>
+<li>依次用同样的方法，排序。<br>时间：$\dfrac {n\left( n-1\right) } {2}=O\left( n^{2}\right)$</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">主要代码：</div><div class="line">package sort;</div><div class="line"></div><div class="line">import UtilAlgorithm.Main;</div><div class="line">import UtilAlgorithm.Util;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by xiezhanghua on 2017/2/23.</div><div class="line"> */</div><div class="line">public class Sort &#123;</div><div class="line">    public static int[] bubleSort(int[] arr) &#123;</div><div class="line">        System.out.println(&quot;冒泡排序前的数组为：&quot;);</div><div class="line">        for (int i : arr) &#123;</div><div class="line">            System.out.print(i + &quot; &quot;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        for (int i = 1; i &lt; arr.length; i++) &#123;</div><div class="line">            for (int j = 0; j &lt; arr.length - i; j++) &#123;</div><div class="line">                if (arr[j] &gt; arr[j + 1]) &#123;</div><div class="line">                    int temp = arr[j];</div><div class="line">                    arr[j] = arr[j + 1];</div><div class="line">                    arr[j + 1] = temp;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        System.out.println(&quot;&quot;);</div><div class="line">        System.out.println(&quot;冒泡排序后的数组为：&quot;);</div><div class="line">        for (int i : arr) &#123;</div><div class="line">            System.out.print(i + &quot; &quot;);</div><div class="line">        &#125;</div><div class="line">        return arr;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="参考书籍和链接"><a href="#参考书籍和链接" class="headerlink" title="参考书籍和链接"></a>参考书籍和链接</h2><p> 《java 常用算法手册》<br> 《java 语言程序设计》</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/java/" class="article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/23/javahigh/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-bug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -194,11 +305,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -453,7 +564,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>这里记录下每个阶段的学习资料</p>
-<p>##java 多线程和并发<br><a href="http://wiki.jikexueyuan.com/project/java-concurrent/thread-communication.html" target="_blank" rel="external">java 并发性和多线程</a><br><a href="http://ifeve.com/" target="_blank" rel="external">并发编程网</a><br><a href="http://docs.oracle.com/javase/8/docs/api/index.html" target="_blank" rel="external">JDK8</a><br><a href="http://download.java.net/jdk/jdk-api-localizations/jdk-api-zh-cn/builds/latest/html/zh_CN/api/" target="_blank" rel="external">JDK6</a></p>
+<p>##java 多线程和并发<br><a href="http://wiki.jikexueyuan.com/project/java-concurrent/thread-communication.html" target="_blank" rel="external">java 并发性和多线程</a><br><a href="http://ifeve.com/" target="_blank" rel="external">并发编程网</a><br><a href="http://docs.oracle.com/javase/8/docs/api/index.html" target="_blank" rel="external">JDK8</a><br><a href="http://download.java.net/jdk/jdk-api-localizations/jdk-api-zh-cn/builds/latest/html/zh_CN/api/" target="_blank" rel="external">JDK6</a><br><a href="http://blog.csdn.net/u013473691/article/details/52353923" target="_blank" rel="external"> @SpringBootApplication的使用</a></p>
 <p><a href="http://lycy521.blog.51cto.com/3492922/1333172" target="_blank" rel="external">mysql 忘记 root 密码</a></p>
 <h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>《Mysql快速入门》 纸质书籍<br>《事务处理的技术和概念》 这个学习的文档使电子书籍<br>《java编程思想》 纸质书籍</p>
 
@@ -1063,15 +1174,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color5">paln</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1091,7 +1198,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">paln</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1115,11 +1226,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">reading</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1127,11 +1238,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1144,6 +1251,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">

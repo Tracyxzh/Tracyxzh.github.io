@@ -6,17 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 数据结构 | 小章鱼的blog</title>
+  <title>spring aop 使用以及代理原理 | 小章鱼的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直快乐的鱼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小章鱼的blog">
-<meta property="og:url" content="http://yoursite.com/tags/数据结构/index.html">
+  <meta name="description" content="前言又到了紧张刺激的前言了，前一段时间整理了hashmap以及解决hash碰撞的方法，然后今天在阿里第一次面试的时候就问到了。虽然这个回答的还可以，但是我对自己还是失望的，面试问我spring和主要概念aop我知不知道。讲真的，我老早就说准备看看，而且我还看过一遍，但是就只是那么匆匆一看，没有怎么在意。果然就像考试，只有仔细认真的人才会一直取得高分。所以我今天一天都在研究spring aop。
+使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring aop 使用以及代理原理">
+<meta property="og:url" content="http://yoursite.com/2017/03/10/springaop/index.html">
 <meta property="og:site_name" content="小章鱼的blog">
-<meta property="og:description" content="一直快乐的鱼">
+<meta property="og:description" content="前言又到了紧张刺激的前言了，前一段时间整理了hashmap以及解决hash碰撞的方法，然后今天在阿里第一次面试的时候就问到了。虽然这个回答的还可以，但是我对自己还是失望的，面试问我spring和主要概念aop我知不知道。讲真的，我老早就说准备看看，而且我还看过一遍，但是就只是那么匆匆一看，没有怎么在意。果然就像考试，只有仔细认真的人才会一直取得高分。所以我今天一天都在研究spring aop。
+使">
+<meta property="og:updated_time" content="2017-03-10T11:25:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小章鱼的blog">
-<meta name="twitter:description" content="一直快乐的鱼">
+<meta name="twitter:title" content="spring aop 使用以及代理原理">
+<meta name="twitter:description" content="前言又到了紧张刺激的前言了，前一段时间整理了hashmap以及解决hash碰撞的方法，然后今天在阿里第一次面试的时候就问到了。虽然这个回答的还可以，但是我对自己还是失望的，面试问我spring和主要概念aop我知不知道。讲真的，我老早就说准备看看，而且我还看过一遍，但是就只是那么匆匆一看，没有怎么在意。果然就像考试，只有仔细认真的人才会一直取得高分。所以我今天一天都在研究spring aop。
+使">
   
     <link rel="alternative" href="/atom.xml" title="小章鱼的blog" type="application/atom+xml">
   
@@ -149,46 +153,67 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-springaop" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/02/TreeMap/" class="archive-article-date">
-  	<time datetime="2017-03-02T10:46:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/02/TreeMap/">二叉查找树</a>
+    <h1 class="article-title" itemprop="name">
+      spring aop 使用以及代理原理
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/10/springaop/" class="archive-article-date">
+  	<time datetime="2017-03-10T11:09:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>又到了紧张刺激的前言了，前一段时间整理了hashmap以及解决hash碰撞的方法，然后今天在阿里第一次面试的时候就问到了。虽然这个回答的还可以，但是我对自己还是失望的，面试问我spring和主要概念aop我知不知道。讲真的，我老早就说准备看看，而且我还看过一遍，但是就只是那么匆匆一看，没有怎么在意。果然就像考试，只有仔细认真的人才会一直取得高分。所以我今天一天都在研究spring aop。</p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>面向切面区别于面向对象，由于琐碎的逻辑需要嵌入整体的项目框架。如果是面向对象需要在相应的对象中修改代码，这样显然很麻烦，而且琐碎的逻辑耦合在了项目中。如果使用面向切面，就可以减少耦合。通过面向切面可以不用修改原有项目代码，而是在外部找到添加代码，找到需要嵌入逻辑的地方标记好，那么运行的时候就会插入相应的代码。比如我们常用的日志以及授权。</p>
+<h2 id="实践出真知"><a href="#实践出真知" class="headerlink" title="实践出真知"></a>实践出真知</h2><p>定义切面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">@Aspect</div><div class="line">public class TestAspect &#123;</div><div class="line">    @Before(&quot;execution(* com.example.web.LoginControlller.well(..))&quot;)</div><div class="line">    public void logBefore(JoinPoint joinPoint) &#123;</div><div class="line"></div><div class="line">        System.out.println(&quot;logBefore() is running!&quot;);</div><div class="line">        System.out.println(&quot;hijacked : &quot; + joinPoint.getSignature().getName());</div><div class="line">        System.out.println(&quot;******&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @After(&quot;execution(* com.example.web.LoginControlller.well(..))&quot;)</div><div class="line">    public void logAfter(JoinPoint joinPoint) &#123;</div><div class="line"></div><div class="line">        System.out.println(&quot;logAfter() is running!&quot;);</div><div class="line">        System.out.println(&quot;hijacked : &quot; + joinPoint.getSignature().getName());</div><div class="line">        System.out.println(&quot;******&quot;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @AfterReturning(</div><div class="line">            pointcut = &quot;execution(* com.example.web.LoginControlller.well(..)))&quot;,</div><div class="line">            returning= &quot;result&quot;)</div><div class="line">    public void logAfterReturning(JoinPoint joinPoint, Object result) &#123;</div><div class="line"></div><div class="line">        System.out.println(&quot;logAfterReturning() is running!&quot;);</div><div class="line">        System.out.println(&quot;hijacked : &quot; + joinPoint.getSignature().getName());</div><div class="line">        System.out.println(&quot;Method returned value is : &quot; + result);</div><div class="line">        System.out.println(&quot;******&quot;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>定义控制器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@RestController</div><div class="line">public class LoginControlller &#123;</div><div class="line">    @RequestMapping(value = &quot;/login&quot;, method = RequestMethod.POST)</div><div class="line">    public String login (@PathVariable String post) &#123;</div><div class="line">        System.out.println(&quot;login() is running &quot;);</div><div class="line">        return &quot;hah&quot;;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">logBefore() is running!</div><div class="line">hijacked : well</div><div class="line">******</div><div class="line">get() is running </div><div class="line">logAfter() is running!</div><div class="line">hijacked : well</div><div class="line">******</div><div class="line">logAfterReturning() is running!</div><div class="line">hijacked : well</div><div class="line">Method returned value is : well</div><div class="line">******</div></pre></td></tr></table></figure></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#aop" target="_blank" rel="external">spring 官方文档</a><br><a href="http://wiki.jikexueyuan.com/project/spring/aop-with-spring-framenwork/aspectj-based-aop-with-spring.html" target="_blank" rel="external">spring aop使用</a><br><a href="https://www.zhihu.com/question/24863332" target="_blank" rel="external">aop</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据结构</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Tree</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -196,36 +221,112 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java/" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/10/springaop/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/03/07/hashmap/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hashmap 源码分析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="springaop" data-title="spring aop 使用以及代理原理" data-url="http://yoursite.com/2017/03/10/springaop/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
   
 
-    
+
+
 
 
           </div>
@@ -248,9 +349,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
