@@ -176,7 +176,19 @@
 <h2 id="实践出真知"><a href="#实践出真知" class="headerlink" title="实践出真知"></a>实践出真知</h2><p>定义切面<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">@Aspect</div><div class="line">public class TestAspect &#123;</div><div class="line">    @Before(&quot;execution(* com.example.web.LoginControlller.well(..))&quot;)</div><div class="line">    public void logBefore(JoinPoint joinPoint) &#123;</div><div class="line"></div><div class="line">        System.out.println(&quot;logBefore() is running!&quot;);</div><div class="line">        System.out.println(&quot;hijacked : &quot; + joinPoint.getSignature().getName());</div><div class="line">        System.out.println(&quot;******&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @After(&quot;execution(* com.example.web.LoginControlller.well(..))&quot;)</div><div class="line">    public void logAfter(JoinPoint joinPoint) &#123;</div><div class="line"></div><div class="line">        System.out.println(&quot;logAfter() is running!&quot;);</div><div class="line">        System.out.println(&quot;hijacked : &quot; + joinPoint.getSignature().getName());</div><div class="line">        System.out.println(&quot;******&quot;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @AfterReturning(</div><div class="line">            pointcut = &quot;execution(* com.example.web.LoginControlller.well(..)))&quot;,</div><div class="line">            returning= &quot;result&quot;)</div><div class="line">    public void logAfterReturning(JoinPoint joinPoint, Object result) &#123;</div><div class="line"></div><div class="line">        System.out.println(&quot;logAfterReturning() is running!&quot;);</div><div class="line">        System.out.println(&quot;hijacked : &quot; + joinPoint.getSignature().getName());</div><div class="line">        System.out.println(&quot;Method returned value is : &quot; + result);</div><div class="line">        System.out.println(&quot;******&quot;);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>定义控制器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@RestController</div><div class="line">public class LoginControlller &#123;</div><div class="line">    @RequestMapping(value = &quot;/login&quot;, method = RequestMethod.POST)</div><div class="line">    public String login (@PathVariable String post) &#123;</div><div class="line">        System.out.println(&quot;login() is running &quot;);</div><div class="line">        return &quot;hah&quot;;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 <p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">logBefore() is running!</div><div class="line">hijacked : well</div><div class="line">******</div><div class="line">get() is running </div><div class="line">logAfter() is running!</div><div class="line">hijacked : well</div><div class="line">******</div><div class="line">logAfterReturning() is running!</div><div class="line">hijacked : well</div><div class="line">Method returned value is : well</div><div class="line">******</div></pre></td></tr></table></figure></p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#aop" target="_blank" rel="external">spring 官方文档</a><br><a href="http://wiki.jikexueyuan.com/project/spring/aop-with-spring-framenwork/aspectj-based-aop-with-spring.html" target="_blank" rel="external">spring aop使用</a><br><a href="https://www.zhihu.com/question/24863332" target="_blank" rel="external">aop</a></p>
+<h2 id="spring-aop-的代理模式"><a href="#spring-aop-的代理模式" class="headerlink" title="spring aop 的代理模式"></a>spring aop 的代理模式</h2><p>这是官网对于spring aop代理的描述，这里可以看到</p>
+<ul>
+<li>静态代理：使用 AOP 框架提供的命令进行编译，从而在编译阶段就可生成 AOP 代理类，因此也称为编译时增强；静态代理以 AspectJ 为代表。</li>
+<li>动态代理：在运行时借助于 JDK 动态代理、CGLIB 等在内存中“临时”生成 AOP 动态代理类，因此也被称为运行时增强。Spring AOP 用的就是 动态代理</li>
+</ul>
+<p>动态代理</p>
+<ul>
+<li>JDK 动态代理（接口）</li>
+<li>CGLIB （类）<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Spring AOP defaults to using standard JDK dynamic proxies for AOP proxies. This enables any interface (or set of interfaces) to be proxied.</div><div class="line"></div><div class="line">Spring AOP can also use CGLIB proxies. This is necessary to proxy classes rather than interfaces. CGLIB is used by default if a business object does not implement an interface. As it is good practice to program to interfaces rather than classes; business classes normally will implement one or more business interfaces. It is possible to force the use of CGLIB, in those (hopefully rare) cases where you need to advise a method that is not declared on an interface, or where you need to pass a proxied object to a method as a concrete type.</div><div class="line"></div><div class="line">It is important to grasp the fact that Spring AOP is proxy-based. See Section 11.6.1, “Understanding AOP proxies” for a thorough examination of exactly what this implementation detail actually means.</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><a href="http://www.jasongj.com/design_pattern/dynamic_proxy_cglib/" target="_blank" rel="external">链接</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#aop" target="_blank" rel="external">spring 官方文档</a><br><a href="http://wiki.jikexueyuan.com/project/spring/aop-with-spring-framenwork/aspectj-based-aop-with-spring.html" target="_blank" rel="external">spring aop使用</a><br><a href="https://www.zhihu.com/question/24863332" target="_blank" rel="external">aop</a><br><a href="https://github.com/pzxwhc/MineKnowContainer/issues/85" target="_blank" rel="external">设计模式</a></p>
 
       
 
@@ -1189,15 +1201,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,7 +1213,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1218,14 +1238,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
