@@ -17,7 +17,7 @@
 <meta property="og:description" content="前言又到了紧张刺激的前言了，前一段时间整理了hashmap以及解决hash碰撞的方法，然后今天在阿里第一次面试的时候就问到了。虽然这个回答的还可以，但是我对自己还是失望的，面试问我spring和主要概念aop我知不知道。讲真的，我老早就说准备看看，而且我还看过一遍，但是就只是那么匆匆一看，没有怎么在意。果然就像考试，只有仔细认真的人才会一直取得高分。所以我今天一天都在研究spring aop。
 使">
 <meta property="og:image" content="http://yoursite.com/2017/03/10/springaop/proxy.png">
-<meta property="og:updated_time" content="2017-03-11T12:06:43.000Z">
+<meta property="og:updated_time" content="2017-03-11T12:23:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring aop 使用以及代理原理">
 <meta name="twitter:description" content="前言又到了紧张刺激的前言了，前一段时间整理了hashmap以及解决hash碰撞的方法，然后今天在阿里第一次面试的时候就问到了。虽然这个回答的还可以，但是我对自己还是失望的，面试问我spring和主要概念aop我知不知道。讲真的，我老早就说准备看看，而且我还看过一遍，但是就只是那么匆匆一看，没有怎么在意。果然就像考试，只有仔细认真的人才会一直取得高分。所以我今天一天都在研究spring aop。
@@ -89,7 +89,7 @@
 		        
 					<a class="twitter" target="_blank" href="#" title="twitter"><i class="icon-twitter"></i></a>
 		        
-		        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=2&id=412016547&auto=1&height=32"></iframe>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -204,6 +204,8 @@
 <h3 id="CGLIB代理"><a href="#CGLIB代理" class="headerlink" title="CGLIB代理"></a>CGLIB代理</h3><p>spring 使用cglib代理的类<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">class CglibAopProxy implements AopProxy, Serializable &#123;</div><div class="line">@Override</div><div class="line">public Object getProxy(ClassLoader classLoader) &#123;</div><div class="line">	...</div><div class="line"></div><div class="line">	try &#123;</div><div class="line">		...</div><div class="line">		// Configure CGLIB Enhancer...</div><div class="line">		Enhancer enhancer = createEnhancer();</div><div class="line">		if (classLoader != null) &#123;</div><div class="line">			enhancer.setClassLoader(classLoader);</div><div class="line">			if (classLoader instanceof SmartClassLoader &amp;&amp;</div><div class="line">					((SmartClassLoader) classLoader).isClassReloadable(proxySuperClass)) &#123;</div><div class="line">				enhancer.setUseCache(false);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		//设置父类</div><div class="line">		enhancer.setSuperclass(proxySuperClass);</div><div class="line">		enhancer.setInterfaces(AopProxyUtils.completeProxiedInterfaces(this.advised));</div><div class="line">		enhancer.setNamingPolicy(SpringNamingPolicy.INSTANCE);</div><div class="line">		enhancer.setStrategy(new ClassLoaderAwareUndeclaredThrowableStrategy(classLoader));</div><div class="line"></div><div class="line">		Callback[] callbacks = getCallbacks(rootClass);</div><div class="line">		Class&lt;?&gt;[] types = new Class&lt;?&gt;[callbacks.length];</div><div class="line">		for (int x = 0; x &lt; types.length; x++) &#123;</div><div class="line">			types[x] = callbacks[x].getClass();</div><div class="line">		&#125;</div><div class="line">		// fixedInterceptorMap only populated at this point, after getCallbacks call above</div><div class="line">		enhancer.setCallbackFilter(new ProxyCallbackFilter(</div><div class="line">				this.advised.getConfigurationOnlyCopy(), this.fixedInterceptorMap, this.fixedInterceptorOffset));</div><div class="line">		enhancer.setCallbackTypes(types);</div><div class="line"></div><div class="line">		// Generate the proxy class and create a proxy instance.</div><div class="line">		return createProxyClassAndInstance(enhancer, callbacks);</div><div class="line">	&#125;</div><div class="line">	...</div><div class="line">	protected Object createProxyClassAndInstance(Enhancer enhancer, Callback[] callbacks) &#123;</div><div class="line">		enhancer.setInterceptDuringConstruction(false);</div><div class="line">		//设置回调函数</div><div class="line">		enhancer.setCallbacks(callbacks);</div><div class="line">		return (this.constructorArgs != null ?</div><div class="line">				enhancer.create(this.constructorArgTypes, this.constructorArgs) :</div><div class="line">				enhancer.create());</div><div class="line">	&#125;</div><div class="line">	...</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>主要注意的地方就是Enhancer类的使用.在创建的时候，我们要使用一个 Enhance 类的对象，而不再是 Proxy，需要为其实例指定一个父类，也就是我们 的目标对象。这样，我们新创建出来的对象就是目标对象的子类，有目标对象的一样。除此之外，还要指定一个回调函数，这个函数就和Proxy的 invoke()类似。</p>
 <p>总体来说，使用CGlib的方法和使用Proxy的方法差不多，只是Proxy创建出来的代理对象和目标对象都实现了同一个接口。而CGlib的方法则是直接继承了目标对象。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="298" height="52" src="//music.163.com/outchain/player?type=2&id=412016547&auto=1&height=32"></iframe>
+
 <p><a href="https://github.com/cglib/cglib/wiki/Tutorial" target="_blank" rel="external">Enhancer</a></p>
 <h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#aop" target="_blank" rel="external">spring 官方文档</a><br><a href="http://wiki.jikexueyuan.com/project/spring/aop-with-spring-framenwork/aspectj-based-aop-with-spring.html" target="_blank" rel="external">spring aop使用</a><br><a href="https://www.zhihu.com/question/24863332" target="_blank" rel="external">aop</a><br><a href="https://github.com/pzxwhc/MineKnowContainer/issues/85" target="_blank" rel="external">设计模式</a><br><a href="http://blog.csdn.net/natian306/article/details/16371389" target="_blank" rel="external">natian306的专栏</a><br><a href="https://github.com/cglib/cglib/wiki/Tutorial" target="_blank" rel="external">Enhancer</a><br><a href="http://www.jasongj.com/design_pattern/dynamic_proxy_cglib/" target="_blank" rel="external">链接</a></p>
 
@@ -511,15 +513,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
