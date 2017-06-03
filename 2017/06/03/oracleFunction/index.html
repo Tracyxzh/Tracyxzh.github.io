@@ -42,7 +42,7 @@ TAN(n)
 指数／对数函数
 SQRT(n) n的平方根
 PO">
-<meta property="og:updated_time" content="2017-06-03T04:36:39.000Z">
+<meta property="og:updated_time" content="2017-06-03T04:38:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oracle 内置函数">
 <meta name="twitter:description" content="写在前面的话由于有的时候需要对于字符串或则日期使用一些内置的函数，但是平时google的时候也比较麻烦，这里干脆做个记录，方便以后自己翻阅。
@@ -235,6 +235,7 @@ PO">
 <li>TRUNC(n， integer) 截取到小数点的integer位</li>
 </ul>
 <h2 id="字符函数-参数都是字符类型的参数单引号"><a href="#字符函数-参数都是字符类型的参数单引号" class="headerlink" title="字符函数 参数都是字符类型的参数单引号"></a>字符函数 参数都是字符类型的参数单引号</h2><p>LENGTH(char) 返回指定的字符长度</p>
+<a id="more"></a>
 <h3 id="字符串截取"><a href="#字符串截取" class="headerlink" title="字符串截取"></a>字符串截取</h3><p>参数(char,position[,substring_length])<br>char：原始字符串<br>position：要截取字符串的开始位置<br>substring_length：截取的长度<br>SUBSTR：以字符为单位<br>SUBSTRB：以字节为单位<br>SUBSTRC：以unicode为单位<br>SUBSTR2：以UCS2代码点为单位<br>SUBSTR4：以UCS4代码点为单位</p>
 <h3 id="字符串连接函数"><a href="#字符串连接函数" class="headerlink" title="字符串连接函数"></a>字符串连接函数</h3><p>CONCAT(char1,char2)函数 效果与“||”相似</p>
 <h3 id="字符串搜索函数"><a href="#字符串搜索函数" class="headerlink" title="字符串搜索函数"></a>字符串搜索函数</h3><p>参数(string,substring[,position[,occurrence]])<br>string：待搜索的字符串<br>substring：要搜索的字符串<br>position：搜索开始的位置,默认是1<br>occuurrence：substring第几次出现，默认是1<br>INSTR：以字符为单位<br>INSTRB：以字节为单位<br>INSTRC：以unicode为单位<br>INSTR2：以UCS2代码点为单位<br>INSTR4：以UCS4代码点为单位</p>
