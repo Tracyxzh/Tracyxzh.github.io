@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Category: bug | 小章鱼的blog</title>
+  <title>数据仓库 | 小章鱼的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直快乐的鱼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小章鱼的blog">
-<meta property="og:url" content="http://yoursite.com/categories/bug/index.html">
+  <meta name="description" content="前言最近在银联实习也算是做数据挖掘方面的工作，先前虽然有接触算法这一块，学校也开了机器学习这门课，但是对于数据仓库不是很了解。那个和厂商聊起来，他问我学过数据仓库吗，我没答应上来，所以今天准备好好学习下数据仓库。
+定义20世纪80年代中期，“数据仓库”（Data Warahouse， DW）这个名词首次出现在号称“数据仓库之父”W.H.Inmon（恩门）的Building Data Warahou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据仓库">
+<meta property="og:url" content="http://yoursite.com/2017/06/04/dataWarehouse/index.html">
 <meta property="og:site_name" content="小章鱼的blog">
-<meta property="og:description" content="一直快乐的鱼">
+<meta property="og:description" content="前言最近在银联实习也算是做数据挖掘方面的工作，先前虽然有接触算法这一块，学校也开了机器学习这门课，但是对于数据仓库不是很了解。那个和厂商聊起来，他问我学过数据仓库吗，我没答应上来，所以今天准备好好学习下数据仓库。
+定义20世纪80年代中期，“数据仓库”（Data Warahouse， DW）这个名词首次出现在号称“数据仓库之父”W.H.Inmon（恩门）的Building Data Warahou">
+<meta property="og:image" content="http://yoursite.com/2017/06/04/dataWarehouse/dw.jpeg">
+<meta property="og:updated_time" content="2017-06-04T14:54:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小章鱼的blog">
-<meta name="twitter:description" content="一直快乐的鱼">
+<meta name="twitter:title" content="数据仓库">
+<meta name="twitter:description" content="前言最近在银联实习也算是做数据挖掘方面的工作，先前虽然有接触算法这一块，学校也开了机器学习这门课，但是对于数据仓库不是很了解。那个和厂商聊起来，他问我学过数据仓库吗，我没答应上来，所以今天准备好好学习下数据仓库。
+定义20世纪80年代中期，“数据仓库”（Data Warahouse， DW）这个名词首次出现在号称“数据仓库之父”W.H.Inmon（恩门）的Building Data Warahou">
+<meta name="twitter:image" content="http://yoursite.com/2017/06/04/dataWarehouse/dw.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="小章鱼的blog" type="application/atom+xml">
   
@@ -149,79 +155,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-dataWarehouse" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/22/bug/" class="archive-article-date">
-  	<time datetime="2017-02-22T05:40:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/22/bug/">开发中的bug</a>
+    <h1 class="article-title" itemprop="name">
+      数据仓库
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/06/04/dataWarehouse/" class="archive-article-date">
+  	<time datetime="2017-06-04T13:52:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在银联实习也算是做数据挖掘方面的工作，先前虽然有接触算法这一块，学校也开了机器学习这门课，但是对于数据仓库不是很了解。那个和厂商聊起来，他问我学过数据仓库吗，我没答应上来，所以今天准备好好学习下数据仓库。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>20世纪80年代中期，“数据仓库”（Data Warahouse， DW）这个名词首次出现在号称“数据仓库之父”W.H.Inmon（恩门）的Building Data Warahouse一书中。恩门把数据仓库定义为“一个面向主题的，集成的，稳定的，随时间变化的数据的集合，以用于支持管理决策过程”。</p>
+<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>面向主题组织的数据具有以下特点：</p>
+<ul>
+<li>各个主题有完整，一致的内容以便在此基础上做分析处理</li>
+<li>主题之间有重叠的内容，反映主题间的联系。重叠是逻辑上的，不是物理上的。</li>
+<li>各主题的综合方式存在不同。</li>
+<li>主题域应该具有独立性（数据是否属于该主题有明确的界限）和完备性（对该主题进行分析所涉及的内容均要在主题域内）。</li>
+</ul>
+<h3 id="集成性"><a href="#集成性" class="headerlink" title="集成性"></a>集成性</h3><p>数据仓库中存储的数据一般从企业原有已建立的数据库系统中提取出来，但并不是所有数据的简单拷贝，而是经过抽取、筛选、清理、转换、综合等工作得到的数据。</p>
+<h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><p>数据仓库在某个时间段内来看是保持不变的。</p>
+<h3 id="随时间而变化"><a href="#随时间而变化" class="headerlink" title="随时间而变化"></a>随时间而变化</h3><p>数据仓库大多关注的是历史数据，其中数据是批量载入的，即定期操作型应用系统中接收新的数据内容，这使得数据仓库中的数据总是拥有时间维度。</p>
+<h2 id="数据仓库系统"><a href="#数据仓库系统" class="headerlink" title="数据仓库系统"></a>数据仓库系统</h2><h3 id="数据仓库组成"><a href="#数据仓库组成" class="headerlink" title="数据仓库组成"></a>数据仓库组成</h3><p>数据仓库系统通常指一个数据库环境，而不是指一件产品。数据仓库系统的一般体系结构如下图所示，整个数据仓库系统分为源数据层、数据存储和管理层、OLAP服务器层和前端分析工具层<br><img src="/2017/06/04/dataWarehouse/dw.jpeg" alt="数据仓库组成"></p>
+<a id="more"></a>
+<h2 id="参考书籍和链接"><a href="#参考书籍和链接" class="headerlink" title="参考书籍和链接"></a>参考书籍和链接</h2><p>《数据仓库与数据挖掘概述》</p>
+<h2 id="每文音乐推荐"><a href="#每文音乐推荐" class="headerlink" title="每文音乐推荐"></a>每文音乐推荐</h2><p>评论：<br>贾听听听不来课：Bob Dylan在给他在纽约的第一任女友Suze Rotolo的信中这样写道：这儿什么也没发生.狗在等着出门,贼在等着老妇人,孩子们在等着上学,条子们在等着揍人.每个人都在等着更凉快的天气.而我只是在等你.那些美好就在我们身边,但却没有被留意….</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=5057793&auto=1&height=66"></iframe>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据仓库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/bug/" class="article-tag-list-link color4">bug</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/04/dataWarehouse/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/06/04/oraCons/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据库约束</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="dataWarehouse" data-title="数据仓库" data-url="http://yoursite.com/2017/06/04/dataWarehouse/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
   
 
-    
+
+
 
 
           </div>
@@ -244,10 +361,10 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
