@@ -6,17 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: java | 小章鱼的blog</title>
+  <title>约束 | 小章鱼的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直快乐的鱼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小章鱼的blog">
-<meta property="og:url" content="http://yoursite.com/tags/java/page/2/index.html">
+  <meta name="description" content="写在前面的话在系统学习数据库之前，直接前面知识了解CURD操作的命令，有的时候再写代码的时候会遇到要求需要添加NOT NULL等约束，但是具体有哪些约束以及如何给出专业的解释，其实自己是比较虚的。所以今天准备系统学习下数据库的约束。
+约束约束是数据库中不可少的一部分。约束的目的在于保持数据的完整性，数据完整性是指数据的精确性以及可靠性。约束的种类：
+
+域完整性：对数据表中字段属性的约束，主要包括n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="约束">
+<meta property="og:url" content="http://yoursite.com/2017/06/04/oraCons/index.html">
 <meta property="og:site_name" content="小章鱼的blog">
-<meta property="og:description" content="一直快乐的鱼">
+<meta property="og:description" content="写在前面的话在系统学习数据库之前，直接前面知识了解CURD操作的命令，有的时候再写代码的时候会遇到要求需要添加NOT NULL等约束，但是具体有哪些约束以及如何给出专业的解释，其实自己是比较虚的。所以今天准备系统学习下数据库的约束。
+约束约束是数据库中不可少的一部分。约束的目的在于保持数据的完整性，数据完整性是指数据的精确性以及可靠性。约束的种类：
+
+域完整性：对数据表中字段属性的约束，主要包括n">
+<meta property="og:updated_time" content="2017-06-04T03:07:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小章鱼的blog">
-<meta name="twitter:description" content="一直快乐的鱼">
+<meta name="twitter:title" content="约束">
+<meta name="twitter:description" content="写在前面的话在系统学习数据库之前，直接前面知识了解CURD操作的命令，有的时候再写代码的时候会遇到要求需要添加NOT NULL等约束，但是具体有哪些约束以及如何给出专业的解释，其实自己是比较虚的。所以今天准备系统学习下数据库的约束。
+约束约束是数据库中不可少的一部分。约束的目的在于保持数据的完整性，数据完整性是指数据的精确性以及可靠性。约束的种类：
+
+域完整性：对数据表中字段属性的约束，主要包括n">
   
     <link rel="alternative" href="/atom.xml" title="小章鱼的blog" type="application/atom+xml">
   
@@ -149,197 +159,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-oraCons" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      约束
+    </h1>
+  
+
+        
+        <a href="/2017/06/04/oraCons/" class="archive-article-date">
+  	<time datetime="2017-06-04T02:04:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h2><p>在系统学习数据库之前，直接前面知识了解CURD操作的命令，有的时候再写代码的时候会遇到要求需要添加NOT NULL等约束，但是具体有哪些约束以及如何给出专业的解释，其实自己是比较虚的。所以今天准备系统学习下数据库的约束。</p>
+<h2 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h2><p>约束是数据库中不可少的一部分。约束的目的在于保持数据的完整性，数据完整性是指数据的精确性以及可靠性。约束的种类：</p>
+<ul>
+<li>域完整性：对数据表中字段属性的约束，主要包括not null约束／唯一约束／检查约束</li>
+<li>实体完整性：主键约束，关系中主属性不为null且不能有相同值。</li>
+<li>参照完整性：外键约束，关系中外键必须是另一个关系的主键有效值</li>
+</ul>
+<a id="more"></a>
+<h2 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h2><p>定义：主键被创建在一个或者多个列上，通过这些列的值或者值的组合，唯一地标识一条记录。<br>特点：</p>
+<ul>
+<li>定义了primary key 约束的列（或列组合）不能包含重复值，并且不能包含null值</li>
+<li>Oracle自动为具有parimary key约束的列（或列组合）建立了一个唯一索引和not null约束</li>
+<li>同一个表只能定义一个primary key约束</li>
+<li>可以在列上定义primary key约束，也可以在多个列上组合上定义primary key约束</li>
+</ul>
+<h2 id="外键"><a href="#外键" class="headerlink" title="外键"></a>外键</h2><p>定义：外键约束可以保证使用外键约束的数据库列与所引用的主键约束的数据列一致，外键约束在一个数据表可以有多个。定义了foreign key约束的列称为外键列，被foreign key约束索引的列称为引用列。包含外键的表称为子表，包含引用列的表称为父表。<br>特点：</p>
+<ul>
+<li>定义了foreign key 约束的列中只能包含相应的其他表中引用的列的值，或为null</li>
+<li>定义了foreign key 约束的列赫相应的引用列可以在同一个表中，这种情况称为自引用</li>
+<li>同一个列可以同时定义foreign key和not null约束</li>
+<li>foreign key必须参照一个primary key约束或者唯一约束约束</li>
+<li>可以在列上定义foreign key约束，也可以在多个列上组合上定义foreign key约束</li>
+</ul>
+<h2 id="唯一约束（UNIQUE约束）"><a href="#唯一约束（UNIQUE约束）" class="headerlink" title="唯一约束（UNIQUE约束）"></a>唯一约束（UNIQUE约束）</h2><p>定义：唯一性约束和主键约束很相似，不同的是主键约束在同一个表中只能有一个，而唯一约束在一个表中可以有多个</p>
+<h2 id="检查约束"><a href="#检查约束" class="headerlink" title="检查约束"></a>检查约束</h2><p>针对列值本身进行限制</p>
+<h2 id="参考书籍和链接"><a href="#参考书籍和链接" class="headerlink" title="参考书籍和链接"></a>参考书籍和链接</h2><p>《oracle 入门》</p>
+<h2 id="每文音乐推荐"><a href="#每文音乐推荐" class="headerlink" title="每文音乐推荐"></a>每文音乐推荐</h2><p>爱听音乐的猫大叔：爸妈只会简单地操作电脑，<br>我在另一个城市上班，忙的发昏，很少回去。<br>所以就在电脑上弄了个360，<br>他们也不会杀毒，<br>每次我回去，体检一下电脑，升一下级。<br>昨天老妈打电话 ：儿子啊，360已经提示187天没有体检了………<br>顿时，泪流满面。</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=5149899&auto=1&height=66"></iframe>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/24/quickSort/" class="archive-article-date">
-  	<time datetime="2017-02-24T05:44:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/24/quickSort/">java 算法 （排序算法 快速排序）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">oracle</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">约束</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/04/oraCons/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/23/javahigh/" class="archive-article-date">
-  	<time datetime="2017-02-23T15:02:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/23/javahigh/">java 算法 （排序算法 冒泡排序）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java/" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/06/03/oracleFunction/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">oracle 内置函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/17/reading/" class="archive-article-date">
-  	<time datetime="2017-02-17T06:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/17/reading/">学习资料记录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">reading</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/travel/" class="article-tag-list-link color2">travel</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
   
-  
-    </div></section>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="oraCons" data-title="约束" data-url="http://yoursite.com/2017/06/04/oraCons/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/java/">&laquo; Prev</a><a class="page-number" href="/tags/java/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+
+
 
 
           </div>
@@ -362,9 +372,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
