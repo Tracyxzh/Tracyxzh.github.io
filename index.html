@@ -172,7 +172,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在实习数据挖掘的工作，但是做的事情就是将oracle的存储过程改成spark sql，这里坦白下我的Scala还在学习的路上。但是我的学习习惯是刨根问底，数据挖掘最终用到的算法才是最终吸引我的。而且最近真的喜欢用网易云听歌，一边听着JBL中放着的歌，一边看着算法，想象自己喝着红酒🍷。所以今天看看推荐算法是如何实现的。</p>
-<h2 id="协同过滤-collaborative-filtering"><a href="#协同过滤-collaborative-filtering" class="headerlink" title="协同过滤 collaborative filtering"></a>协同过滤 collaborative filtering</h2><p>之所以称为“协同”是因为该方法基于其他用户进行推荐。实际上，人们通过协同合作来形成推荐。其工作流程如下：假设要完成的任务是推荐一本书。那么会在网站上搜索与你兴趣类似的其他用户。一旦找到这个用户，就看看这个用户所喜欢的书然后将它们推荐给你。<br>找到相似用户的方法一般是通过距离。<br>距离一般化：明氏距离（Minkowski Distance）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">b(x,y)=(\sum_&#123;k=1&#125;^&#123;n&#125;\left |  \right x_&#123;k&#125;-y_&#123;k&#125;|)^&#123;r^&#123;1/r&#125;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="协同过滤-collaborative-filtering"><a href="#协同过滤-collaborative-filtering" class="headerlink" title="协同过滤 collaborative filtering"></a>协同过滤 collaborative filtering</h2><p>之所以称为“协同”是因为该方法基于其他用户进行推荐。实际上，人们通过协同合作来形成推荐。其工作流程如下：假设要完成的任务是推荐一本书。那么会在网站上搜索与你兴趣类似的其他用户。一旦找到这个用户，就看看这个用户所喜欢的书然后将它们推荐给你。<br>找到相似用户的方法一般是通过距离。<br>距离一般化：明氏距离（Minkowski Distance）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$\dfrac b(x,y)=(\sum_&#123;k=1&#125;^&#123;n&#125;\left |  \right x_&#123;k&#125;-y_&#123;k&#125;|)^&#123;r^&#123;1/r&#125;&#125;$</div><div class="line">$\dfrac &#123;n\left( n-1\right) &#125; &#123;2&#125;=O\left( n^&#123;2&#125;\right)$</div></pre></td></tr></table></figure></p>
 <p>其中：</p>
 <ul>
 <li>r=1时，上述公式计算的就是曼哈顿距离</li>
@@ -1059,14 +1059,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
@@ -1080,6 +1072,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
