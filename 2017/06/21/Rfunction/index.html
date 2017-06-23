@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="小章鱼的blog">
 <meta property="og:description" content="前言开始了R语言的学习
 基础函数123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081# 首先要学习的函数? # 和help函数一样str # st">
-<meta property="og:updated_time" content="2017-06-21T14:52:28.000Z">
+<meta property="og:updated_time" content="2017-06-23T07:40:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R常用函数和数据结构">
 <meta name="twitter:description" content="前言开始了R语言的学习
@@ -174,9 +174,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>开始了R语言的学习</p>
-<h2 id="基础函数"><a href="#基础函数" class="headerlink" title="基础函数"></a>基础函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"># 首先要学习的函数</div><div class="line">? # 和help函数一样</div><div class="line">str # struture的简写</div><div class="line"></div><div class="line"># 重要的运算符和赋值函数</div><div class="line">%in%, match  # a%in%y 判断a是否为y中的元素</div><div class="line">=, &lt;-, &lt;&lt;- # x=c(1,2,3) x&lt;&lt;-x*2 结果 x=c(2,4,6)更新x的值</div><div class="line">$, [, [[, head, tail, subset # head(1:50, 10) [1]1  2  3  4  5  6  7  8  9 10 tail(1:50, 10)  [1] 41 42 43 44 45 46 47 48 49 50</div><div class="line">with</div><div class="line">assign, get</div><div class="line"></div><div class="line"># 比较</div><div class="line">all.equal, identical</div><div class="line">!=, ==, &gt;, &gt;=, &lt;, &lt;=</div><div class="line">is.na, complete.cases</div><div class="line">is.finite</div><div class="line"></div><div class="line"># 基础数学</div><div class="line">*, +, -, /, ^, %%, %/% # %% 取余 # %/% 取整</div><div class="line">abs, sign # sign 指示函数</div><div class="line">acos, asin, atan, atan2</div><div class="line">sin, cos, tan</div><div class="line">ceiling, floor, round, trunc, signif # trunc 去除小数  signif(data, n) data 精确的位数为n，包括整数</div><div class="line">exp, log, log10, log2, sqrt</div><div class="line">max, min, prod, sum # prod 连乘</div><div class="line">cummax, cummin, cumprod, cumsum, diff # cu开头的函数计算累计值 # diff计算间隔</div><div class="line">pmax, pmin  # pmax(x,y,z) 返回x,y,z各列的最大值</div><div class="line">range # 取出最大最小值</div><div class="line">mean, median, cor, sd, var # cor 相关系数  sd 均方差Standard Deviation var 方差</div><div class="line">rle # Run Length Encoding 连续变量统计</div><div class="line"></div><div class="line"># 处理函数的函数</div><div class="line">function</div><div class="line">missing</div><div class="line">on.exit</div><div class="line">return, invisible</div><div class="line"></div><div class="line"># 逻辑与集合</div><div class="line">&amp;, |, !, xor</div><div class="line">all, any</div><div class="line">intersect, union, setdiff, setequal</div><div class="line">which</div><div class="line"></div><div class="line"># 向量与矩阵</div><div class="line">c, matrix</div><div class="line"># 强制转换规则字符型(character)&gt;数值型(numeric)逻辑型(logical)</div><div class="line">length, dim, ncol, nrow</div><div class="line">cbind, rbind</div><div class="line">names, colnames, rownames</div><div class="line">t</div><div class="line">diag</div><div class="line">sweep</div><div class="line">as.matrix, data.matrix</div><div class="line"></div><div class="line"># 构建向量</div><div class="line">c</div><div class="line">rep, rep_len</div><div class="line">seq, seq_len, seq_along</div><div class="line">rev</div><div class="line">sample</div><div class="line">choose, factorial, combn</div><div class="line">(is/as).(character/numeric/logical/...)</div><div class="line"></div><div class="line"># 列表和数据框</div><div class="line">list, unlist</div><div class="line">data.frame, as.data.frame</div><div class="line">split</div><div class="line">expand.grid</div><div class="line"></div><div class="line"># 控制流</div><div class="line">if, &amp;&amp;, || (short circuiting)</div><div class="line">for, while</div><div class="line">next, break</div><div class="line">switch</div><div class="line">ifelse</div><div class="line"></div><div class="line"># apply函数和相似函数</div><div class="line">lapply, sapply, vapply</div><div class="line">apply</div><div class="line">tapply</div><div class="line">replicte</div></pre></td></tr></table></figure>
+<h2 id="基础函数"><a href="#基础函数" class="headerlink" title="基础函数"></a>基础函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"># 首先要学习的函数</div><div class="line">? # 和help函数一样</div><div class="line">str # struture的简写</div><div class="line"></div><div class="line"># 重要的运算符和赋值函数</div><div class="line">%in%, match  # a%in%y 判断a是否为y中的元素</div><div class="line">=, &lt;-, &lt;&lt;- # x=c(1,2,3) x&lt;&lt;-x*2 结果 x=c(2,4,6)更新x的值</div><div class="line">$, [, [[, head, tail, subset # head(1:50, 10) [1]1  2  3  4  5  6  7  8  9 10 tail(1:50, 10)  [1] 41 42 43 44 45 46 47 48 49 50</div><div class="line">with</div><div class="line">assign, get</div><div class="line"></div><div class="line"># 比较</div><div class="line">all.equal, identical</div><div class="line">!=, ==, &gt;, &gt;=, &lt;, &lt;=</div><div class="line">is.na, complete.cases</div><div class="line">is.finite</div><div class="line"></div><div class="line"># 基础数学</div><div class="line">*, +, -, /, ^, %%, %/% # %% 取余 # %/% 取整</div><div class="line">abs, sign # sign 指示函数</div><div class="line">acos, asin, atan, atan2</div><div class="line">sin, cos, tan</div><div class="line">ceiling, floor, round, trunc, signif # trunc 去除小数  signif(data, n) data 精确的位数为n，包括整数</div><div class="line">exp, log, log10, log2, sqrt</div><div class="line">max, min, prod, sum # prod 连乘</div><div class="line">cummax, cummin, cumprod, cumsum, diff # cu开头的函数计算累计值 # diff计算间隔</div><div class="line">pmax, pmin  # pmax(x,y,z) 返回x,y,z各列的最大值</div><div class="line">range # 取出最大最小值</div><div class="line">mean, median, cor, sd, var # cor 相关系数  sd 均方差Standard Deviation var 方差</div><div class="line">rle # Run Length Encoding 连续变量统计</div><div class="line"></div><div class="line"># 处理函数的函数</div><div class="line">function</div><div class="line">missing</div><div class="line">on.exit</div><div class="line">return, invisible</div><div class="line"></div><div class="line"># 逻辑与集合</div><div class="line">&amp;, |, !, xor</div><div class="line">all, any</div><div class="line">intersect, union, setdiff, setequal</div><div class="line">which # 用法which(test)。返回test为真值的位置</div><div class="line"></div><div class="line"># 向量与矩阵</div><div class="line">c, matrix</div><div class="line"># 强制转换规则字符型(character)&gt;数值型(numeric)逻辑型(logical)</div><div class="line">length, dim, ncol, nrow</div><div class="line">cbind, rbind</div><div class="line">names, colnames, rownames</div><div class="line">t</div><div class="line">diag</div><div class="line">sweep</div><div class="line">as.matrix, data.matrix</div><div class="line"></div><div class="line"># 构建向量</div><div class="line">c</div><div class="line">rep, rep_len</div><div class="line">seq, seq_len, seq_along</div><div class="line">rev</div><div class="line">sample</div><div class="line">choose, factorial, combn</div><div class="line">(is/as).(character/numeric/logical/...)</div><div class="line"></div><div class="line"># 列表和数据框</div><div class="line">list, unlist</div><div class="line">data.frame, as.data.frame</div><div class="line">split</div><div class="line">expand.grid</div><div class="line"></div><div class="line"># 控制流</div><div class="line">if, &amp;&amp;, || (short circuiting)</div><div class="line">for, while</div><div class="line">next, break</div><div class="line">switch</div><div class="line">ifelse # ifelse(test, yes, no) test为真，输出yes值，否则输出no值。</div><div class="line"></div><div class="line"># apply函数和相似函数</div><div class="line">lapply, sapply, vapply</div><div class="line">apply</div><div class="line">tapply</div><div class="line">replicate # replicate(n, f) # 对于函数f运行n次</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="常见数据结构"><a href="#常见数据结构" class="headerlink" title="常见数据结构"></a>常见数据结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># 日期时间</div><div class="line">ISOdata, ISOdatatime, strftime, strptime, data</div><div class="line">difftime</div><div class="line">julian, months, quarters, weekdays</div><div class="line">library(lubridate)</div><div class="line"></div><div class="line"># 字符处理</div><div class="line">grep, agrep</div><div class="line">gsub # 字符替换 gsub(pattern, replacement, x)</div><div class="line">strsplit</div><div class="line">chartr</div><div class="line">nchar</div><div class="line">tolower, toupper</div><div class="line">substr</div><div class="line">paste</div><div class="line">library(string)</div><div class="line"></div><div class="line"># 因子</div><div class="line">factor, levels, nlevels</div><div class="line">reorder, relevel</div><div class="line">cut, findInterval</div><div class="line">interaction</div><div class="line">options(stringAsFactors = FALSE)</div><div class="line"></div><div class="line"># 数组处理</div><div class="line">array</div><div class="line">dim</div><div class="line">dimnames</div><div class="line">aperm</div><div class="line">library(abind)</div></pre></td></tr></table></figure>
+<h3 id="常见数据结构"><a href="#常见数据结构" class="headerlink" title="常见数据结构"></a>常见数据结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"># 日期时间</div><div class="line">ISOdate, ISOdatetime, strftime, strptime, date </div><div class="line">difftime # difftime(date1, date2) 返回时间差</div><div class="line">julian, months, quarters, weekdays # weekdays(date) 返回星期几 # quarters() 返回季度 # moths() 返回月份 # julian(date) 返回date离19700101的天数</div><div class="line">library(lubridate)</div><div class="line"></div><div class="line"># 字符处理</div><div class="line">grep, agrep</div><div class="line">gsub # 字符替换 gsub(pattern, replacement, x)</div><div class="line">strsplit</div><div class="line">chartr</div><div class="line">nchar</div><div class="line">tolower, toupper</div><div class="line">substr</div><div class="line">paste # paste(data1, data2, sep = &quot;world&quot;) 结果是data1和data2拼接中间以world连接，world是可以自己定义的</div><div class="line">library(string)</div><div class="line"></div><div class="line"># 因子</div><div class="line">factor, levels, nlevels</div><div class="line">reorder, relevel</div><div class="line">cut, findInterval</div><div class="line">interaction</div><div class="line">options(stringAsFactors = FALSE)</div><div class="line"></div><div class="line"># 数组处理</div><div class="line">array</div><div class="line">dim</div><div class="line">dimnames</div><div class="line">aperm</div><div class="line">library(abind)</div></pre></td></tr></table></figure>
 <h3 id="统计函数"><a href="#统计函数" class="headerlink" title="统计函数"></a>统计函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># 排序和制表</div><div class="line">duplicated, unique  # unique 找出不同的元素</div><div class="line">merge</div><div class="line">order, rank, quantile</div><div class="line">sort</div><div class="line">table, ftable</div><div class="line"></div><div class="line"># 线性模型</div><div class="line">fitted, predict, resid, restandard</div><div class="line">lm, glm</div><div class="line">hat, influence.measures</div><div class="line">logLik, df, deviance</div><div class="line">formula, ~, I</div><div class="line">anova, coef, confint, vcov</div><div class="line">contrasts</div><div class="line"></div><div class="line"># 测试类函数</div><div class="line">apropos(&quot;\\.test$&quot;)</div><div class="line"></div><div class="line"># 随机变量</div><div class="line">(q, p, d, r) * (beta, binom, cauchy, chisq, exp, f, gamma, geom, hyper, lnorm, logis, multinom, nbinom, norm, pois, signrank, t, unif, weibull, wilcox, birthday, tukey)</div><div class="line"></div><div class="line"># 矩阵运算</div><div class="line">crossprod, tcrossprod</div><div class="line">eigen, qr, svd</div><div class="line">%*%, %o%, outer</div><div class="line">rcond</div><div class="line">solve</div></pre></td></tr></table></figure>
 <h3 id="使用R"><a href="#使用R" class="headerlink" title="使用R"></a>使用R</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># 工作空间</div><div class="line">ls, exists, rm # ls: 当前工作空间中的objects # exists 判断是否存在当前工作空间 # rm 删除工作空间中某个object</div><div class="line">getwd, setwd # 返回当前工作空间 # 设置当前工作空间</div><div class="line">q # 退出</div><div class="line">source # &quot;预装&quot;函数</div><div class="line">install.packages, library, require </div><div class="line"></div><div class="line"># 帮助</div><div class="line">help, ?</div><div class="line">help.search</div><div class="line">apropos</div><div class="line">RSiteSearch</div><div class="line">citation</div><div class="line">demo</div><div class="line">example</div><div class="line">vignette</div><div class="line"></div><div class="line"># 调试</div><div class="line">traceback</div><div class="line">browser</div><div class="line">recover</div><div class="line">options(error = )</div><div class="line">stop, warning, message</div><div class="line">traCath, try</div></pre></td></tr></table></figure>
 <h3 id="I-O函数"><a href="#I-O函数" class="headerlink" title="I/O函数"></a>I/O函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># 输出</div><div class="line">print, cat</div><div class="line">message, warning</div><div class="line">dput</div><div class="line">format</div><div class="line">sink, capture.output</div><div class="line"></div><div class="line"># 读／写数据</div><div class="line">data</div><div class="line">count.fields</div><div class="line">read.csv, write.csv</div><div class="line">read.delim, write.delim </div><div class="line">read.fwf </div><div class="line">readLines, writeLines</div><div class="line">readRDS, saveRDS</div><div class="line">load, save </div><div class="line">library(foreign)</div><div class="line"></div><div class="line"># 文件和目录</div><div class="line">dir</div><div class="line">basename, dirname, tools::file_ext</div><div class="line">file.path</div><div class="line">path.expand, normalizePath</div><div class="line">file.choose</div><div class="line">file.copy, file.create, file.remove, file.rename, dir.create</div><div class="line">file.exists, file.info</div><div class="line">tempdir, tempfile</div><div class="line">download.file, library(downloader)</div></pre></td></tr></table></figure>
@@ -285,11 +285,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/06/21/rpackge/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/21/Rpackgedply/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          R函数包-dplyr
+          R工具包-dplyr
         
       </div>
     </a>
@@ -387,6 +387,17 @@ MathJax.Hub.Queue(function() {
 </script>
 
 
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?853c108fcaf23c11187079149882c744";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -439,6 +450,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
@@ -448,6 +463,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,15 +502,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据仓库</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,15 +530,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -527,7 +546,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,11 +554,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,6 +566,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">travel</a>
               </li>
              
@@ -559,7 +578,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">uml</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,11 +594,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">uml</a>
+                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
               </li>
             
             <div class="clearfix"></div>
