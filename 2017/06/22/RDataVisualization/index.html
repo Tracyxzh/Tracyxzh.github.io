@@ -8,25 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>R数据可视化-ggplot2 | 小章鱼的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言数据可视化是最直观的展示数据的一种方式
-安装install.packages(“tidyverse”)library(tidyverse)
-绘图函数ggplot(data = ) +  (mapping = aes())
-例子12345678910111213141516171819202122ggplot(data = mpg) +   geom_point(mapping = aes(x">
+  <meta name="description" content="前言数据可视化是最直观的展示数据的一种方式。R语言提供了多种绘图系统，借助它们可以轻松绘制散点图(scatter plot)、折线图(graph of broken line)、条形图(bar graph)、箱线图(box plot)等。R的绘图功能主要由graphics、lattice、ggplot这3个包提供
+plot12345678910111213plot(	x,     # x	y,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R数据可视化-ggplot2">
 <meta property="og:url" content="http://yoursite.com/2017/06/22/RDataVisualization/index.html">
 <meta property="og:site_name" content="小章鱼的blog">
-<meta property="og:description" content="前言数据可视化是最直观的展示数据的一种方式
-安装install.packages(“tidyverse”)library(tidyverse)
-绘图函数ggplot(data = ) +  (mapping = aes())
-例子12345678910111213141516171819202122ggplot(data = mpg) +   geom_point(mapping = aes(x">
-<meta property="og:updated_time" content="2017-06-22T03:05:55.000Z">
+<meta property="og:description" content="前言数据可视化是最直观的展示数据的一种方式。R语言提供了多种绘图系统，借助它们可以轻松绘制散点图(scatter plot)、折线图(graph of broken line)、条形图(bar graph)、箱线图(box plot)等。R的绘图功能主要由graphics、lattice、ggplot这3个包提供
+plot12345678910111213plot(	x,     # x	y,">
+<meta property="og:updated_time" content="2017-06-26T06:09:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R数据可视化-ggplot2">
-<meta name="twitter:description" content="前言数据可视化是最直观的展示数据的一种方式
-安装install.packages(“tidyverse”)library(tidyverse)
-绘图函数ggplot(data = ) +  (mapping = aes())
-例子12345678910111213141516171819202122ggplot(data = mpg) +   geom_point(mapping = aes(x">
+<meta name="twitter:description" content="前言数据可视化是最直观的展示数据的一种方式。R语言提供了多种绘图系统，借助它们可以轻松绘制散点图(scatter plot)、折线图(graph of broken line)、条形图(bar graph)、箱线图(box plot)等。R的绘图功能主要由graphics、lattice、ggplot这3个包提供
+plot12345678910111213plot(	x,     # x	y,">
   
     <link rel="alternative" href="/atom.xml" title="小章鱼的blog" type="application/atom+xml">
   
@@ -179,7 +173,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据可视化是最直观的展示数据的一种方式</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据可视化是最直观的展示数据的一种方式。R语言提供了多种绘图系统，借助它们可以轻松绘制散点图(scatter plot)、折线图(graph of broken line)、条形图(bar graph)、箱线图(box plot)等。R的绘图功能主要由graphics、lattice、ggplot这3个包提供</p>
+<h2 id="plot"><a href="#plot" class="headerlink" title="plot"></a>plot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">plot(</div><div class="line">	x,     # x</div><div class="line">	y,     # y</div><div class="line">	xlab,  # 横坐标name</div><div class="line">	ylab,  # 纵坐标name</div><div class="line">	main,  # 图name</div><div class="line">	pch,   # 点类型</div><div class="line">	cex,   # 点大小</div><div class="line">	col,   # 点颜色</div><div class="line">	xlim,  # x范围</div><div class="line">	ylim,  # y范围</div><div class="line">	type   # 图像类型，p点，l线，b点线</div><div class="line">)</div></pre></td></tr></table></figure>
+<h2 id="par"><a href="#par" class="headerlink" title="par"></a>par</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">使用plot绘图，每次都会新建一个窗口，可以使用par</div><div class="line">par(</div><div class="line">	... # 采用tag = value 方式设置参数</div><div class="line">)</div></pre></td></tr></table></figure>
+<h2 id="jitter"><a href="#jitter" class="headerlink" title="jitter"></a>jitter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">jitter(</div><div class="line">	x,              # 数据</div><div class="line">	factor = 1,     # 设置噪声水平</div><div class="line">	amount = null</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>points、lines、abline在plot的图纸上添加点和线、直线</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>install.packages(“tidyverse”)<br>library(tidyverse)</p>
 <h2 id="绘图函数"><a href="#绘图函数" class="headerlink" title="绘图函数"></a>绘图函数</h2><p>ggplot(data = <data>) +<br>  <geom_function>(mapping = aes(<mappings>))</mappings></geom_function></data></p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">ggplot(data = mpg) + </div><div class="line">  geom_point(mapping = aes(x = displ, y = hwy, size = class))</div><div class="line">说明:</div><div class="line">mpg是这个包中自带的一份数据，这个数据是美国环境保护局对于38种车型的统计数据</div><div class="line"></div><div class="line"></div><div class="line">mpg</div><div class="line">#&gt; # A tibble: 234 × 11</div><div class="line">#&gt;   manufacturer model displ  year   cyl      trans   drv   cty   hwy    fl</div><div class="line">#&gt;          &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;      &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</div><div class="line">#&gt; 1         audi    a4   1.8  1999     4   auto(l5)     f    18    29     p</div><div class="line">#&gt; 2         audi    a4   1.8  1999     4 manual(m5)     f    21    29     p</div><div class="line">#&gt; 3         audi    a4   2.0  2008     4 manual(m6)     f    20    31     p</div><div class="line">#&gt; 4         audi    a4   2.0  2008     4   auto(av)     f    21    30     p</div><div class="line">#&gt; 5         audi    a4   2.8  1999     6   auto(l5)     f    16    26     p</div><div class="line">#&gt; 6         audi    a4   2.8  1999     6 manual(m5)     f    18    26     p</div><div class="line">#&gt; # ... with 228 more rows, and 1 more variables: class &lt;chr&gt;</div><div class="line"></div><div class="line">aes(x = displ, y = hwy)：</div><div class="line">这里是绘制displ和hwy关系的二维图像</div><div class="line">size = class:</div><div class="line">对于图像中的点根据class分类使用不同的大小，这里还可以使用color，shape，alpha，这几个单词的字面意思，大家可以动手实现一下</div></pre></td></tr></table></figure>
@@ -453,18 +451,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">R</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
@@ -477,11 +463,39 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+                <a href="javascript:void(0)" class="js-tag color2">R</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据操作</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -501,19 +515,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -522,6 +524,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,11 +547,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">logical</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,7 +571,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,7 +579,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -577,23 +591,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">travel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thailand</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">uml</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,6 +608,22 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">uml</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">动态规划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">运筹学</a>
               </li>
             
             <div class="clearfix"></div>
