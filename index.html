@@ -151,6 +151,153 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-sshr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/05/sshr/">sshr</a>
+    </h1>
+  
+
+        
+        <a href="/2018/04/05/sshr/" class="archive-article-date">
+  	<time datetime="2018-04-05T02:04:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>科学上网的是从研一开始的，开始都是使用蓝灯和green这两个免费的VPN。想过去买VPN，有人推荐过熊猫翻滚（听名字还蛮可爱的）。想到以后工作科学上网的需求更多，就决定自己搭个梯子，最后经人推荐选择了<a href="https://www.vultr.com/" target="_blank" rel="external">vultr</a>。</p>
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>登陆vultr官网，注册登陆</p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>购买服务器，点击下图中的加号<br><img src="/2018/04/05/sshr/1.jpeg" alt="购买图片"></p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>ping一下服务器，可能是一个脏ip。如果ping通了就进行下一步，ping不通就22334再来一次，删除刚刚买的服务器，再卖一个。（ps：购买前需要给账户充值，这个还支持了alipay）</p>
+<h3 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h3><p>登陆服务器</p>
+<ol>
+<li>可以本地ssh到服务器</li>
+<li>可以点击网页的view console登陆服务器<br><img src="/2018/04/05/sshr/1.jpeg" alt="服务器图片"></li>
+</ol>
+<h3 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h3><p>修改root密码</p>
+<h3 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h3><p>ssr一件脚本安装<a href="https://github.com/ToyoDAdoubi/doubi" target="_blank" rel="external">脚本地址</a></p>
+<h3 id="第七步"><a href="#第七步" class="headerlink" title="第七步"></a>第七步</h3><p>安装登陆工具<br>mac：<a href="https://github.com/qinyuhang/ShadowsocksX-NG-R/releases" target="_blank" rel="external">工具下载，分支下载</a><br>windows：<a href="https://github.com/shadowsocksr-rm/shadowsocksr-csharp" target="_blank" rel="external">教程安装</a><br>ios：要折腾一会的。<br>步骤：</p>
+<ol>
+<li>注册一个美区账号，用笔记本翻墙状态登陆苹果官网注册</li>
+<li>购买vpn（winpy下架了，付费的需要信用卡）<br>android: 应用商店搜索SSR</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">科学上网</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/05/sshr/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-RoiPooling" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/31/RoiPooling/">RoiPooling</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/31/RoiPooling/" class="archive-article-date">
+  	<time datetime="2018-03-31T07:06:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="RoiPooling"><a href="#RoiPooling" class="headerlink" title="RoiPooling"></a>RoiPooling</h2><p>RoiPooling是用在Faster RCNN由RBG大神提出的一种方法。主要原因可以从RCNN和Fast RCNN等提起，这里长话短说。定义好网络结构以后网络的输入和输出是固定的，那么对于不同的输入，输出必然是不同的。传统的解决方法是通过resize输入图像的大小，这样的话对于原始输入显然有影响。为了解决这个问题还一个思路就是在网络中添加一个类似动态的结构，这里RBG大神使用的就是RoiPooling，通过此用这种特殊的池化结构，使得不同的输入可以输出相同的输出。参考链接一解释为：它的目的是对不规范的输入进行max pooling，以获得固定尺寸的feature maps（例如7×7）。</p>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><p>RoiPooling最终输出相同大小的feature map，具体步骤是：<br>1.把region proposal划分成等大小的部分（其数目等同于输出的维度）。<br>2.对每个部分取最大值</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://blog.deepsense.ai/region-of-interest-pooling-explained/" target="_blank" rel="external">英文</a><br><a href="https://worldhellooo.github.io/2017/04/17/%E7%BF%BB%E8%AF%91%20Region%20of%20interest%20pooling%20explained/" target="_blank" rel="external">翻译</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">目标检测</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RoiPooling</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/31/RoiPooling/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-videomodel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -158,7 +305,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/25/videomodel/">videomodel</a>
+      <a class="article-title" href="/2018/03/25/videomodel/">视频模型</a>
     </h1>
   
 
@@ -173,6 +320,9 @@
       
         <h2 id="常用图像模型"><a href="#常用图像模型" class="headerlink" title="常用图像模型"></a>常用图像模型</h2><ol>
 <li>HSV颜色模型</li>
+</ol>
+<p>色调（Hue），饱和度（Saturation），明暗度（Value）</p>
+<ol>
 <li>肤色模型</li>
 <li>形状模型</li>
 <li>人体可变模型</li>
@@ -757,153 +907,6 @@
 
 
   
-    <article id="post-Rpackgelubridate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/22/Rpackgelubridate/">R工具包-lubridate</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/22/Rpackgelubridate/" class="archive-article-date">
-  	<time datetime="2017-06-22T05:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>R语言用到了对于时间的处理</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">install.packages(&quot;lubridate&quot;)</div><div class="line">library(&quot;lubridate&quot;)</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/06/22/Rpackgelubridate/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">R</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lubridate</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/22/Rpackgelubridate/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-RDataVisualization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/22/RDataVisualization/">R数据可视化-ggplot2</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/22/RDataVisualization/" class="archive-article-date">
-  	<time datetime="2017-06-22T01:46:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据可视化是最直观的展示数据的一种方式。R语言提供了多种绘图系统，借助它们可以轻松绘制散点图(scatter plot)、折线图(graph of broken line)、条形图(bar graph)、箱线图(box plot)等。R的绘图功能主要由graphics、lattice、ggplot这3个包提供</p>
-<h2 id="plot"><a href="#plot" class="headerlink" title="plot"></a>plot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">plot(</div><div class="line">	x,     # x</div><div class="line">	y,     # y</div><div class="line">	xlab,  # 横坐标name</div><div class="line">	ylab,  # 纵坐标name</div><div class="line">	main,  # 图name</div><div class="line">	pch,   # 点类型</div><div class="line">	cex,   # 点大小</div><div class="line">	col,   # 点颜色</div><div class="line">	xlim,  # x范围</div><div class="line">	ylim,  # y范围</div><div class="line">	type   # 图像类型，p点，l线，b点线</div><div class="line">)</div></pre></td></tr></table></figure>
-<h2 id="par"><a href="#par" class="headerlink" title="par"></a>par</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">使用plot绘图，每次都会新建一个窗口，可以使用par</div><div class="line">par(</div><div class="line">	... # 采用tag = value 方式设置参数</div><div class="line">)</div></pre></td></tr></table></figure>
-<h2 id="jitter"><a href="#jitter" class="headerlink" title="jitter"></a>jitter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">jitter(</div><div class="line">	x,              # 数据</div><div class="line">	factor = 1,     # 设置噪声水平</div><div class="line">	amount = null</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>points、lines、abline在plot的图纸上添加点和线、直线</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>install.packages(“tidyverse”)<br>library(tidyverse)</p>
-<h2 id="绘图函数"><a href="#绘图函数" class="headerlink" title="绘图函数"></a>绘图函数</h2><p>ggplot(data = <DATA>) +<br>  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))</MAPPINGS></GEOM_FUNCTION></DATA></p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">ggplot(data = mpg) + </div><div class="line">  geom_point(mapping = aes(x = displ, y = hwy, size = class))</div><div class="line">说明:</div><div class="line">mpg是这个包中自带的一份数据，这个数据是美国环境保护局对于38种车型的统计数据</div><div class="line"></div><div class="line"></div><div class="line">mpg</div><div class="line">#&gt; # A tibble: 234 × 11</div><div class="line">#&gt;   manufacturer model displ  year   cyl      trans   drv   cty   hwy    fl</div><div class="line">#&gt;          &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;      &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</div><div class="line">#&gt; 1         audi    a4   1.8  1999     4   auto(l5)     f    18    29     p</div><div class="line">#&gt; 2         audi    a4   1.8  1999     4 manual(m5)     f    21    29     p</div><div class="line">#&gt; 3         audi    a4   2.0  2008     4 manual(m6)     f    20    31     p</div><div class="line">#&gt; 4         audi    a4   2.0  2008     4   auto(av)     f    21    30     p</div><div class="line">#&gt; 5         audi    a4   2.8  1999     6   auto(l5)     f    16    26     p</div><div class="line">#&gt; 6         audi    a4   2.8  1999     6 manual(m5)     f    18    26     p</div><div class="line">#&gt; # ... with 228 more rows, and 1 more variables: class &lt;chr&gt;</div><div class="line"></div><div class="line">aes(x = displ, y = hwy)：</div><div class="line">这里是绘制displ和hwy关系的二维图像</div><div class="line">size = class:</div><div class="line">对于图像中的点根据class分类使用不同的大小，这里还可以使用color，shape，alpha，这几个单词的字面意思，大家可以动手实现一下</div></pre></td></tr></table></figure>
-<h2 id="切分图像"><a href="#切分图像" class="headerlink" title="切分图像"></a>切分图像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ggplot(data = mpg) + </div><div class="line">  geom_point(mapping = aes(x = displ, y = hwy)) + </div><div class="line">  facet_wrap(~ class)</div><div class="line">facet_wrap 第一个参数是切分依据的字段，该字段需要是离散的</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/06/22/RDataVisualization/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">R</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数据可视化</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/22/RDataVisualization/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1021,18 +1024,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
@@ -1042,6 +1033,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1057,11 +1060,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+                <a href="javascript:void(0)" class="js-tag color1">RoiPooling</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1069,7 +1072,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1078,14 +1089,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1098,6 +1101,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1121,6 +1132,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
@@ -1129,11 +1144,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hash</a>
+                <a href="javascript:void(0)" class="js-tag color3">引用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">引用</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1142,10 +1157,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1169,6 +1180,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
@@ -1182,10 +1201,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thailand</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">

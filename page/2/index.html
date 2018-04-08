@@ -151,6 +151,153 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Rpackgelubridate" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/22/Rpackgelubridate/">R工具包-lubridate</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/22/Rpackgelubridate/" class="archive-article-date">
+  	<time datetime="2017-06-22T05:51:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>R语言用到了对于时间的处理</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">install.packages(&quot;lubridate&quot;)</div><div class="line">library(&quot;lubridate&quot;)</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/06/22/Rpackgelubridate/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">R</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">lubridate</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/22/Rpackgelubridate/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-RDataVisualization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/22/RDataVisualization/">R数据可视化-ggplot2</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/22/RDataVisualization/" class="archive-article-date">
+  	<time datetime="2017-06-22T01:46:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据可视化是最直观的展示数据的一种方式。R语言提供了多种绘图系统，借助它们可以轻松绘制散点图(scatter plot)、折线图(graph of broken line)、条形图(bar graph)、箱线图(box plot)等。R的绘图功能主要由graphics、lattice、ggplot这3个包提供</p>
+<h2 id="plot"><a href="#plot" class="headerlink" title="plot"></a>plot</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">plot(</div><div class="line">	x,     # x</div><div class="line">	y,     # y</div><div class="line">	xlab,  # 横坐标name</div><div class="line">	ylab,  # 纵坐标name</div><div class="line">	main,  # 图name</div><div class="line">	pch,   # 点类型</div><div class="line">	cex,   # 点大小</div><div class="line">	col,   # 点颜色</div><div class="line">	xlim,  # x范围</div><div class="line">	ylim,  # y范围</div><div class="line">	type   # 图像类型，p点，l线，b点线</div><div class="line">)</div></pre></td></tr></table></figure>
+<h2 id="par"><a href="#par" class="headerlink" title="par"></a>par</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">使用plot绘图，每次都会新建一个窗口，可以使用par</div><div class="line">par(</div><div class="line">	... # 采用tag = value 方式设置参数</div><div class="line">)</div></pre></td></tr></table></figure>
+<h2 id="jitter"><a href="#jitter" class="headerlink" title="jitter"></a>jitter</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">jitter(</div><div class="line">	x,              # 数据</div><div class="line">	factor = 1,     # 设置噪声水平</div><div class="line">	amount = null</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>points、lines、abline在plot的图纸上添加点和线、直线</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>install.packages(“tidyverse”)<br>library(tidyverse)</p>
+<h2 id="绘图函数"><a href="#绘图函数" class="headerlink" title="绘图函数"></a>绘图函数</h2><p>ggplot(data = <DATA>) +<br>  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))</MAPPINGS></GEOM_FUNCTION></DATA></p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">ggplot(data = mpg) + </div><div class="line">  geom_point(mapping = aes(x = displ, y = hwy, size = class))</div><div class="line">说明:</div><div class="line">mpg是这个包中自带的一份数据，这个数据是美国环境保护局对于38种车型的统计数据</div><div class="line"></div><div class="line"></div><div class="line">mpg</div><div class="line">#&gt; # A tibble: 234 × 11</div><div class="line">#&gt;   manufacturer model displ  year   cyl      trans   drv   cty   hwy    fl</div><div class="line">#&gt;          &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt;      &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;</div><div class="line">#&gt; 1         audi    a4   1.8  1999     4   auto(l5)     f    18    29     p</div><div class="line">#&gt; 2         audi    a4   1.8  1999     4 manual(m5)     f    21    29     p</div><div class="line">#&gt; 3         audi    a4   2.0  2008     4 manual(m6)     f    20    31     p</div><div class="line">#&gt; 4         audi    a4   2.0  2008     4   auto(av)     f    21    30     p</div><div class="line">#&gt; 5         audi    a4   2.8  1999     6   auto(l5)     f    16    26     p</div><div class="line">#&gt; 6         audi    a4   2.8  1999     6 manual(m5)     f    18    26     p</div><div class="line">#&gt; # ... with 228 more rows, and 1 more variables: class &lt;chr&gt;</div><div class="line"></div><div class="line">aes(x = displ, y = hwy)：</div><div class="line">这里是绘制displ和hwy关系的二维图像</div><div class="line">size = class:</div><div class="line">对于图像中的点根据class分类使用不同的大小，这里还可以使用color，shape，alpha，这几个单词的字面意思，大家可以动手实现一下</div></pre></td></tr></table></figure>
+<h2 id="切分图像"><a href="#切分图像" class="headerlink" title="切分图像"></a>切分图像</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ggplot(data = mpg) + </div><div class="line">  geom_point(mapping = aes(x = displ, y = hwy)) + </div><div class="line">  facet_wrap(~ class)</div><div class="line">facet_wrap 第一个参数是切分依据的字段，该字段需要是离散的</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/06/22/RDataVisualization/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">R</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">数据可视化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/22/RDataVisualization/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Rpackgedply" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -498,11 +645,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
         		</li>
       		
 		</ul>
@@ -782,158 +929,6 @@
 
 
   
-    <article id="post-viewOracle" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/03/viewOracle/">视图 -- 数据库中的虚拟表</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/03/viewOracle/" class="archive-article-date">
-  	<time datetime="2017-06-03T02:19:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在银联实习，实习的内容是基于大数据平台的项目。目前的主要工作内容是数据准备，这需要接触到存储过程以及spark sql，存储过程中还有一些视图。对于存储过程了解程度由于前段时间学习过了，所以基本可以了，所以今天准备学习下视图这方面的知识。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>视图：是一个基于一个或者多个表的逻辑表，视图本身不包括任何数据。</p>
-<h2 id="数据源"><a href="#数据源" class="headerlink" title="数据源"></a>数据源</h2><ul>
-<li>单一表的子集</li>
-<li>多表操作的结果集</li>
-<li>视图的子集</li>
-</ul>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">CREATE [ OR REPLACE ] [ [ ON ] FORCE ] VIEW</div><div class="line">[ schema. ] view</div><div class="line">[ (alias, ...) inline_constraint(s) ]</div><div class="line">[ out_of_line_constrain(s) ]</div><div class="line">AS subquery</div><div class="line">[</div><div class="line">	WITH &#123; READ ONLY | CHECK OPTION [ CONSTRAINT constraint ] &#125;</div><div class="line">]</div><div class="line">[说明]</div><div class="line">OR REPLACE:创建视图的时候如果存在同名视图则覆盖</div><div class="line">[ ON ] FORCE :表示是否强制创建，如果基表不存在的情况下创建视图会出现错误，强制创建可以先创建视图然后再创建基表。</div><div class="line">[ schema. ] view:视图所属方案或者视图的名称</div><div class="line">[ (alias, ...) inline_constraint(s) ]:视图字段的别名和内联约束</div><div class="line">[ out_of_line_constrain(s) ]:也是约束</div><div class="line">WITH READ ONLY:视图只读</div><div class="line">WITH CHECK OPTION [ CONSTRAINT constraint ]:一旦使用该约束，当视图增加或修改数据时必须满足子查询的条件。</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/06/03/viewOracle/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">oracle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/03/viewOracle/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-uml" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/06/uml/">给自己看的UML</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/06/uml/" class="archive-article-date">
-  	<time datetime="2017-04-06T13:25:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>发现自己的心最近有点浮躁了，每次都是有那么一段时间很堕落。不将这个了，今天要讲的是关于设计模式的基础UML，你们可以去知乎上搜一搜，对于UML褒贬不一。我个人感觉还是有用的，如果图能够说明很多语言无法简单描述的问题，那么是不是减少了很多不必要的沟通误会呢。而且理解UML对于自己动手理清思路也很有帮助。</p>
-<h2 id="UML定义"><a href="#UML定义" class="headerlink" title="UML定义"></a>UML定义</h2><p>统一建模语言（英语：Unified Modeling Language，缩写 UML）是非专利的第三代建模和规约语言。UML是一种开放的方法，用于说明、可视化、构建和编写一个正在开发的、面向对象的、软件密集系统的制品的开放方法。UML展现了一系列最佳工程实践，这些最佳实践在对大规模，复杂系统进行建模方面，特别是在软件架构层次已经被验证有效。</p>
-<h2 id="类图"><a href="#类图" class="headerlink" title="类图"></a>类图</h2><p><img src="/2017/04/06/uml/class.png" alt="类图"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">1.类图前的+ - # 表示访问权限</div><div class="line">+ 表示public</div><div class="line"># 表示protect</div><div class="line">- 表示private</div><div class="line">2.类图有3层</div><div class="line">第一层是类名</div><div class="line">第二层是成员</div><div class="line">第三层是方法</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/04/06/uml/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">uml</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/06/uml/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1051,18 +1046,6 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
@@ -1072,6 +1055,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1087,11 +1082,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
+                <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+                <a href="javascript:void(0)" class="js-tag color1">RoiPooling</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1099,7 +1094,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1108,14 +1111,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1128,6 +1123,14 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1151,6 +1154,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
@@ -1159,11 +1166,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hash</a>
+                <a href="javascript:void(0)" class="js-tag color3">引用</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">引用</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1172,10 +1179,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1199,6 +1202,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
@@ -1212,10 +1223,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">thailand</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
