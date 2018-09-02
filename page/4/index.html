@@ -151,6 +151,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-searchAlgorithm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/28/searchAlgorithm/">java 算法 （搜索算法 二分排序）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/28/searchAlgorithm/" class="archive-article-date">
+  	<time datetime="2017-02-28T12:30:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="二分搜索算法"><a href="#二分搜索算法" class="headerlink" title="二分搜索算法"></a>二分搜索算法</h2><p>二分搜索算法顾名思义就是每次分成两边的搜索算法，这个算法的要求是数据已经是排序过的数据。</p>
+<p>步骤</p>
+<ul>
+<li>排序</li>
+<li>比较中值和搜索值大小，化分搜索范围</li>
+<li>对划分的范围继续搜索</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* 不是迭代的二分搜索算法</div><div class="line"> */</div><div class="line">public static int binarySearch(int[] arr, int low, int high,int search) &#123;</div><div class="line">    System.out.println(&quot;&quot;);</div><div class="line">    while (low &lt;= high) &#123;</div><div class="line">        int mid = (low + high) / 2;</div><div class="line">        if (search &gt; arr[mid]) &#123;</div><div class="line">            low = mid + 1;</div><div class="line">            System.out.println(&quot;mid: &quot; + mid + &quot;high: &quot; + high + &quot;low: &quot; + low);</div><div class="line">        &#125; else if (search &lt; arr[mid]) &#123;</div><div class="line">            high = mid - 1;</div><div class="line">            System.out.println(&quot;mid: &quot; + mid + &quot;high: &quot; + high + &quot;low: &quot; + low);</div><div class="line">        &#125; else &#123;</div><div class="line">            System.out.println(&quot;找到的数据在第&quot; + mid + &quot;值为：&quot; + arr[mid]);</div><div class="line">            return arr[mid];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    System.out.println(&quot;无此数据&quot;);</div><div class="line">    return -1;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line">* 二分迭代搜索算法</div><div class="line"> */</div><div class="line">public static int binaryItratorSearch(int[] arr, int low, int high, int search) &#123;</div><div class="line">    System.out.println(&quot;&quot;);</div><div class="line">    if (low &lt;= high) &#123;</div><div class="line">        int mid = (low + high) / 2;</div><div class="line">        if (search &lt; arr[mid]) &#123;</div><div class="line">            high = mid -1;</div><div class="line">            System.out.println(&quot;mid: &quot; + mid + &quot;high: &quot; + high + &quot;low: &quot; + low);</div><div class="line">            binaryItratorSearch(arr, low, high, search);</div><div class="line">        &#125; else if (search &gt; arr[mid]) &#123;</div><div class="line">            low = mid + 1;</div><div class="line">            System.out.println(&quot;mid: &quot; + mid + &quot;high: &quot; + high + &quot;low: &quot; + low);</div><div class="line">            binaryItratorSearch(arr, low, high, search);</div><div class="line">        &#125; else &#123;</div><div class="line">            System.out.println(&quot;找到的数据在第&quot; + mid + &quot;值为：&quot; + arr[mid]);</div><div class="line">            return arr[mid];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    System.out.println(&quot;无此数据&quot;);</div><div class="line">    return -1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/算法/" class="article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/28/searchAlgorithm/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-javaPaper" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -570,11 +658,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -982,99 +1070,6 @@
 
 
   
-    <article id="post-thailand01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/07/thailand01/">泰国游记原稿</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/07/thailand01/" class="archive-article-date">
-  	<time datetime="2017-02-07T03:11:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ps：最近在忙于学业，就一直没有整理我的游记，这里先贴出来一些原始稿件，对大家有帮助</p>
-<p>泰国游记</p>
-<h2 id="第一天1-16"><a href="#第一天1-16" class="headerlink" title="第一天1.16"></a>第一天1.16</h2><p>故事附加：泰国留学生<br>抵达（廊曼机场）<br>午餐当地、meji牛奶<br>下午卧佛寺、拍照（国王丧期，国民祭祀）<br>晚上考山路、酒吧（center khao saim）、小吃、砍价、买东西<br>教训：坑货司机，400RMB<br>关键词：taxi、便宜、彩色（国王颜色，待查证） 、舞蹈<br>中午吃的：鸡腿、牛肉串（不知道叫什么），蔬菜生的配肉和酱，这个酱好辣啊<br>很多材料都没怎么处理，总共510B<br>下午吃的：路边各种免费饮料，应该是国王祭祀期间送的、芒果（不是很甜100B）<br>晚上吃的：榴莲180B（第一次吃😂😂，还挺好吃的））、热带水果拼盘50B两份（火龙果、芒果、木瓜）、pad thai50B（虾仁，加一句，这边的虾不要钱的样子，什么里面都加）、椰奶冰淇淋，有椰肉好吃的50B，酒吧各种好吃的1470B<br>建议：<br>1.酒吧要选人多的，有欧洲人莫名就起舞了😂😂<br>2.榴莲要选软的，颜色偏淡，饱满的<br>3.曼谷check in 3点以后，自己定的民宿可以联系房东，（airbnb上预定的）<br>4.建议住民宿，房东让我们早check in，让我们寄存东西，免费送我们去机场，常常受到我们的电话骚扰。<br>5.司机巨坑，建议能不上高速就不上高速，过高速的费用都是我们出（有点贵🌚），建议接机和包车<br>6.大皇宫8:30-3:30，我们去的时候太晚了，没办法去大皇宫，很遗憾😭😭😭<br>7.国际航空挺稳定，位子也还挺宽的。泰国国内航空位子窄。<br>故事<br>1.老夫妻的舞蹈<br>2.护照丢失奇案，主人公（汪小明）</p>
-<h2 id="第二天1-17"><a href="#第二天1-17" class="headerlink" title="第二天1.17"></a>第二天1.17</h2><p>去机场：100B<br>出行：门口出租都是一口价，不打表，我们包车SUV（260B到酒店）<br>建议：<br>1.正规酒店2点check in，（携程上预定的）可以寄存在东西，用护照。提前check in收费400泰铢<br>2.虫子多<br>3.吃饭<br>4.中午清曼寺，静坐参悟，融入<br>5.check in<br>6.lila按摩店押金600B<br>7.各种寺庙<br>8.坐车到瓦洛洛市场（垃圾）120B<br>草莓150B、菠萝65B、香肠15B<br>9.坐车到苏打曼市场（100B）<br>10.晚饭酒109B，烧烤400B，饭530B<br>11.坐车回酒店150B<br>12.吹风机押金300B<br>袁枫林和陶轩</p>
-<h2 id="1-18"><a href="#1-18" class="headerlink" title="1.18"></a>1.18</h2><p>地点：清迈<br>1.接车到蝴蝶园<br>2.蝴蝶园到激流勇进（很好玩）<br>3.激流勇进照片，工作人员拍（150一张），建议带两套衣服包括内裤，做好防晒，这边711美好的防晒，去boots买<br>4.午餐，自助餐（水好喝，蔬菜沙拉好吃，强推，味道极好一点涩味都没有，超级爽口），套餐内<br>5.骑大象（没什么意思）<br>6.丛林飞跃（19），很好玩，工作人员会拍照，出门在外记得熬pose（150一张），记得带u盘，可以拷贝<br>7.竹筏超级无聊，还要求小费<br>建议：<br>1.5:00小卖部关门，这边游玩身体很渴<br>2.防晒</p>
-<p>早饭：157B<br>晚饭：2550B<br>故事：营救翻船救人，路上混战（champion被围攻，就是我们🙈）goodteam<br>陶轩、老张尿尿在佛祖旁边<br>梗：老司机（xzh）<br>老妈妈（wm，老张）<br>漂酿（袁枫林，zqr）<br>小女孩问（xzh）性别<br>袁枫林裤子开档（被汪明拧坏的</p>
-        
-          <a class="article-more-a" href="/2017/02/07/thailand01/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">travel</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">thailand</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/travel/" class="article-tag-list-link color2">travel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/07/thailand01/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1204,18 +1199,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">R</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据操作</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">pillow</a>
               </li>
              
@@ -1228,6 +1211,18 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">R</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">目标检测</a>
               </li>
              
@@ -1236,35 +1231,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1280,6 +1259,42 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">math</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">统计学习方法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AdaBoost</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据仓库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Exception</a>
               </li>
              
@@ -1289,14 +1304,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">fasion</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据仓库</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1340,11 +1347,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color3">reading</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1372,15 +1379,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">事务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">PL/SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
               </li>
              
               <li class="article-tag-list-item">
