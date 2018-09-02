@@ -190,14 +190,11 @@
 </ol>
 <h3 id="AdaBoost算法"><a href="#AdaBoost算法" class="headerlink" title="AdaBoost算法"></a>AdaBoost算法</h3><p>输入：给定一个二分类数据集：<br>$$T=\lbrace(x_1, y_1), (x_2, y_2),…,(x_n, y_n) \rbrace$$<br>其中$x_i \in R^n$，$y_i \in \lbrace-1,1\rbrace$<br>输出：最终分类起$G(x)$</p>
 <ol>
-<li><p>初始化训练数据的权值分布<br>$$ D_1=(w_11,…,w_1i,…,w_1n), w_1i=\frac {1}{N} $$</p>
-</li>
-<li><p>对$m=1,2,…,M$<br>(a) 使用具有训练数据的权值分布学习，得到基本的分类器<br>(b) 计算分类误差率<br>$$e_m=P(G_m(x_i \neq y_i))$$<br>(c) 计算基本model系数<br>$$\alpha_m=1/2log\frac {1-e_m}{e_m}$$<br>(d) 更新训练数据集的权值分布，也就是根据误差，调整数据分布<br>$$w_m+1,i=\frac {w_mi}{Z_m}exp(- \alpha_m y_i G_m(x_i))$$<br>其中，$Z_m$是规范化因子<br>$$Z_m=\sum_0^n w_mi exp(-\alpha_m y_i G_m(x_i)) $$</p>
-</li>
-<li>构建基本model的线性组合<br>$$f(x)=\sum_1^M \alpha_m G_m(x_i)$$</li>
+<li>初始化训练数据的权值分布<br>$$ D_1=(w_11,…,w_1i,…,w_1n), w_1i=\frac {1}{N} $$</li>
 </ol>
-<p>这里需要重点理解的是基本model的系数，当$e_m \leq 1/2$时候，说明模型的误差低于一半，则$\alpha_m &gt; 0$。说明模型强于随机猜测，而且$\alpha_m$睡着$e_m$减小而增大，说明model误差越小，在最终的投票权越大。<br>第二个需要理解的是$w_m+1,i$，被基本model判断错误的样本，在一下轮训练的权重增大。判断正确的权重减小。</p>
-
+        
+          <a class="article-more-a" href="/2018/09/02/boosting/#more">more >></a>
+        
       
 
       
@@ -282,25 +279,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>科学上网的是从研一开始的，开始都是使用蓝灯和green这两个免费的VPN。想过去买VPN，有人推荐过熊猫翻滚（听名字还蛮可爱的）。想到以后工作科学上网的需求更多，就决定自己搭个梯子，最后经人推荐选择了<a href="https://www.vultr.com/" target="_blank" rel="external">vultr</a>。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>科学上网的是从研一开始的，开始都是使用蓝灯和green这两个免费的VPN。想过去买VPN，有人推荐过熊猫翻滚（听名字还蛮可爱的）。想到以后工作科学上网的需求更多，就决定自己搭个梯子，最后经人推荐选择了<a href="https://www.vultr.com/">vultr</a>。</p>
 <h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>登陆vultr官网，注册登陆</p>
 <h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>购买服务器，点击下图中的加号<br><img src="/2018/04/05/sshr/1.jpeg" alt="购买图片"></p>
-<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>ping一下服务器，可能是一个脏ip。如果ping通了就进行下一步，ping不通就22334再来一次，删除刚刚买的服务器，再买一个。（ps：购买前需要给账户充值，这个还支持了alipay）<br><img src="/2018/04/05/sshr/3.jpeg" alt="服务器图片"><br>安装好后<br><img src="/2018/04/05/sshr/4.jpg" alt="服务器图片"></p>
-<h3 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h3><p>登陆服务器</p>
-<ol>
-<li>可以本地ssh到服务器</li>
-<li>可以点击网页的view console登陆服务器<br><img src="/2018/04/05/sshr/2.jpg" alt="服务器图片"></li>
-</ol>
-<h3 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h3><p>修改root密码</p>
-<h3 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h3><p>ssr一件脚本安装<a href="https://github.com/ToyoDAdoubi/doubi" target="_blank" rel="external">脚本地址</a><br>中间的过程中全部选择默认就好，最后记住自己设置的端口、协议、混淆、ip、passwd，这些信息都将在登陆工具中填写<br><img src="/2018/04/05/sshr/5.jpg" alt="保存信息"></p>
-<h3 id="第七步"><a href="#第七步" class="headerlink" title="第七步"></a>第七步</h3><p>安装登陆工具<br>mac：<a href="https://github.com/qinyuhang/ShadowsocksX-NG-R/releases" target="_blank" rel="external">工具下载，分支下载</a><br>windows：<a href="https://github.com/shadowsocksr-rm/shadowsocksr-csharp" target="_blank" rel="external">教程安装</a><br>百度云盘链接：<a href="https://pan.baidu.com/s/1jyTXsAp9gPwepfV7gLWZzA" target="_blank" rel="external">https://pan.baidu.com/s/1jyTXsAp9gPwepfV7gLWZzA</a></p>
-<p>ios：要折腾一会的。<br>步骤：</p>
-<ol>
-<li>注册一个美区账号，用笔记本翻墙状态登陆苹果官网注册</li>
-<li>购买vpn（winpy下架了，付费的需要信用卡）<br>android: 应用商店搜索SSR<br><img src="/2018/04/05/sshr/android.jpeg" alt="服务器图片"></li>
-</ol>
-<h3 id="网络提速"><a href="#网络提速" class="headerlink" title="网络提速"></a>网络提速</h3><p>bbr一键脚本安装<a href="https://github.com/ToyoDAdoubi/doubi" target="_blank" rel="external">脚本地址</a></p>
-
+        
+          <a class="article-more-a" href="/2018/04/05/sshr/#more">more >></a>
+        
       
 
       
@@ -1089,11 +1073,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
               </li>
              
               <li class="article-tag-list-item">

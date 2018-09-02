@@ -32,7 +32,7 @@
 问题： 
 
 每一轮如何改变训练">
-<meta property="og:updated_time" content="2018-09-02T14:36:44.000Z">
+<meta property="og:updated_time" content="2018-09-02T14:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="boosting">
 <meta name="twitter:description" content="前言  正式工作的第一个项目，用到了xgb。虽然会用model，但是里面的细节还是有很多不清楚，本文开始深究其中的原理。目前：公式的推导，论文的阅读理解。
@@ -216,10 +216,11 @@
 </ol>
 <h3 id="AdaBoost算法"><a href="#AdaBoost算法" class="headerlink" title="AdaBoost算法"></a>AdaBoost算法</h3><p>输入：给定一个二分类数据集：<br>$$T=\lbrace(x_1, y_1), (x_2, y_2),…,(x_n, y_n) \rbrace$$<br>其中$x_i \in R^n$，$y_i \in \lbrace-1,1\rbrace$<br>输出：最终分类起$G(x)$</p>
 <ol>
-<li><p>初始化训练数据的权值分布<br>$$ D_1=(w_11,…,w_1i,…,w_1n), w_1i=\frac {1}{N} $$</p>
-</li>
-<li><p>对$m=1,2,…,M$<br>(a) 使用具有训练数据的权值分布学习，得到基本的分类器<br>(b) 计算分类误差率<br>$$e_m=P(G_m(x_i \neq y_i))$$<br>(c) 计算基本model系数<br>$$\alpha_m=1/2log\frac {1-e_m}{e_m}$$<br>(d) 更新训练数据集的权值分布，也就是根据误差，调整数据分布<br>$$w_m+1,i=\frac {w_mi}{Z_m}exp(- \alpha_m y_i G_m(x_i))$$<br>其中，$Z_m$是规范化因子<br>$$Z_m=\sum_0^n w_mi exp(-\alpha_m y_i G_m(x_i)) $$</p>
-</li>
+<li>初始化训练数据的权值分布<br>$$ D_1=(w_11,…,w_1i,…,w_1n), w_1i=\frac {1}{N} $$</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li>对$m=1,2,…,M$<br>(a) 使用具有训练数据的权值分布学习，得到基本的分类器<br>(b) 计算分类误差率<br>$$e_m=P(G_m(x_i \neq y_i))$$<br>(c) 计算基本model系数<br>$$\alpha_m=1/2log\frac {1-e_m}{e_m}$$<br>(d) 更新训练数据集的权值分布，也就是根据误差，调整数据分布<br>$$w_m+1,i=\frac {w_mi}{Z_m}exp(- \alpha_m y_i G_m(x_i))$$<br>其中，$Z_m$是规范化因子<br>$$Z_m=\sum_0^n w_mi exp(-\alpha_m y_i G_m(x_i)) $$</li>
 <li>构建基本model的线性组合<br>$$f(x)=\sum_1^M \alpha_m G_m(x_i)$$</li>
 </ol>
 <p>这里需要重点理解的是基本model的系数，当$e_m \leq 1/2$时候，说明模型的误差低于一半，则$\alpha_m &gt; 0$。说明模型强于随机猜测，而且$\alpha_m$睡着$e_m$减小而增大，说明model误差越小，在最终的投票权越大。<br>第二个需要理解的是$w_m+1,i$，被基本model判断错误的样本，在一下轮训练的权重增大。判断正确的权重减小。</p>
@@ -550,11 +551,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
               </li>
              
               <li class="article-tag-list-item">
