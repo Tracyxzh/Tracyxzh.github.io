@@ -151,6 +151,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-RpackgeRmysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/26/RpackgeRmysql/">R工具包-RMySQL和数据处理和加工相关包</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/26/RpackgeRmysql/" class="archive-article-date">
+  	<time datetime="2017-06-26T03:12:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>R要处理的数据保存在数据库中，应考虑R与MySQL之间的数据输入和输出问题，RMySQL包正是为了解决这些问题而推出的。</p>
+<h2 id="RMySQL"><a href="#RMySQL" class="headerlink" title="RMySQL"></a>RMySQL</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">install.packages(&quot;RMySQL&quot;)</div><div class="line">library(RMySQL)</div></pre></td></tr></table></figure>
+<h3 id="MySQL函数"><a href="#MySQL函数" class="headerlink" title="MySQL函数"></a>MySQL函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">RMySQL::dbConnect : 连接数据库</div><div class="line">RMySQL::dbConnect(</div><div class="line">	drv,</div><div class="line">	user,</div><div class="line">	password,</div><div class="line">	dbname,</div><div class="line">	host</div><div class="line">)</div><div class="line">返回连接对象</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/06/26/RpackgeRmysql/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">R</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/26/RpackgeRmysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Rdata" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -848,91 +919,6 @@
 
 
   
-    <article id="post-dataWarehouse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/04/dataWarehouse/">数据仓库</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/04/dataWarehouse/" class="archive-article-date">
-  	<time datetime="2017-06-04T13:52:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在银联实习也算是做数据挖掘方面的工作，先前虽然有接触算法这一块，学校也开了机器学习这门课，但是对于数据仓库不是很了解。那个和厂商聊起来，他问我学过数据仓库吗，我没答应上来，所以今天准备好好学习下数据仓库。</p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>20世纪80年代中期，“数据仓库”（Data Warahouse， DW）这个名词首次出现在号称“数据仓库之父”W.H.Inmon（恩门）的Building Data Warahouse一书中。恩门把数据仓库定义为“一个面向主题的，集成的，稳定的，随时间变化的数据的集合，以用于支持管理决策过程”。</p>
-<h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>面向主题组织的数据具有以下特点：</p>
-<ul>
-<li>各个主题有完整，一致的内容以便在此基础上做分析处理</li>
-<li>主题之间有重叠的内容，反映主题间的联系。重叠是逻辑上的，不是物理上的。</li>
-<li>各主题的综合方式存在不同。</li>
-<li>主题域应该具有独立性（数据是否属于该主题有明确的界限）和完备性（对该主题进行分析所涉及的内容均要在主题域内）。</li>
-</ul>
-<h3 id="集成性"><a href="#集成性" class="headerlink" title="集成性"></a>集成性</h3><p>数据仓库中存储的数据一般从企业原有已建立的数据库系统中提取出来，但并不是所有数据的简单拷贝，而是经过抽取、筛选、清理、转换、综合等工作得到的数据。</p>
-<h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><p>数据仓库在某个时间段内来看是保持不变的。</p>
-<h3 id="随时间而变化"><a href="#随时间而变化" class="headerlink" title="随时间而变化"></a>随时间而变化</h3><p>数据仓库大多关注的是历史数据，其中数据是批量载入的，即定期操作型应用系统中接收新的数据内容，这使得数据仓库中的数据总是拥有时间维度。</p>
-<h2 id="数据仓库系统"><a href="#数据仓库系统" class="headerlink" title="数据仓库系统"></a>数据仓库系统</h2><h3 id="数据仓库组成"><a href="#数据仓库组成" class="headerlink" title="数据仓库组成"></a>数据仓库组成</h3><p>数据仓库系统通常指一个数据库环境，而不是指一件产品。数据仓库系统的一般体系结构如下图所示，整个数据仓库系统分为源数据层、数据存储和管理层、OLAP服务器层和前端分析工具层<br><img src="/2017/06/04/dataWarehouse/dw.jpeg" alt="数据仓库组成"></p>
-        
-          <a class="article-more-a" href="/2017/06/04/dataWarehouse/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据挖掘</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据仓库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/04/dataWarehouse/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1050,11 +1036,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">R</a>
+                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1070,19 +1060,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
+                <a href="javascript:void(0)" class="js-tag color2">R</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据操作</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1102,11 +1084,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据操作</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1146,6 +1132,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
@@ -1155,10 +1145,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gbm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1186,15 +1172,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">引用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">引用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1218,11 +1204,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color3">reading</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1234,14 +1220,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">travel</a>
               </li>
              
@@ -1250,15 +1228,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">事务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">PL/SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1271,6 +1257,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人工智能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">xgb</a>
               </li>
             
             <div class="clearfix"></div>

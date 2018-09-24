@@ -151,6 +151,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-xgb-md" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/24/xgb-md/">xgb模型</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/24/xgb-md/" class="archive-article-date">
+  	<time datetime="2018-09-24T03:47:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="xgb目标函数推导"><a href="#xgb目标函数推导" class="headerlink" title="xgb目标函数推导"></a>xgb目标函数推导</h2><p>xgb是一种梯度提升树模型，每次添加一棵树，模型整体效果加强。<br>每个样本的预测值是每棵独立子树各叶子节点*权重的求和<br>$$\hat{y} = \sum_j w_j x_ij$$<br>目标函数是特定学习目标下的loss function<br>$$l(y_i，\hat{y_i}）= (y_i-\hat{y_i})^2$$<br>最优的函数解是在损失函数最小的时候<br>$$F^\ast(\vec{x}) = argminF[l(y, F(\vec{x})]$$<br>集成学习算法的表示方法：<br>$$\hat{y_i} = \sum_1^k f_k(x_i)$$<br>其中$f_k$表示k棵子树组成的xgb模型</p>
+<p>xgb集成学习，具体的表示如下：<br>$\hat{y_i}^{(0)} = 0$<br>$\hat{y_i}^{(1)} = f_1(x_i) = \hat{y_i}^{(0)} + f_1(x_i)$<br>$\hat{y_i}^{(2)} = f_i(x_i) + f_2(x_i) = \hat(y_i)^{(1)} + f_2(x_i)$<br>…<br>$\hat{y_i}^{(t)} = \sum_1^t f_k(x_i) = \hat{y_i}^{(t-1)} + f_t(x_i)$<br>其中$\hat{y_i}^{(t)}$表示第t轮的模型的预测，$\hat{y_i}^{(t-1)}$表示第t-1轮模型的预测值，$f_t(x_i)$表示加入一棵子树以后新的函数</p>
+        
+          <a class="article-more-a" href="/2018/09/24/xgb-md/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">xgb</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/24/xgb-md/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-dbdt-param" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -171,7 +241,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>将GBM作为一个黑盒使用这是远远不够的，我们需要深入了解模型的细节，本次文章主要参考的是<a href="https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/" target="_blank" rel="external">参考链接1</a></p>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>将GBM作为一个黑盒使用这是远远不够的，我们需要深入了解模型的细节，本次文章主要参考的是<a href="https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/">参考链接1</a></p>
 <h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ol>
 <li>提升模型是如何工作的</li>
 <li>理解GBM模型的参数</li>
@@ -251,10 +321,7 @@
 <li>训练过程中，模型输出信息</li>
 <li>0，不打印日志</li>
 <li>1，经过固定轮次打印日志</li>
-<li><blockquote>
-<p>1，打印所有子树的日志</p>
-</blockquote>
-</li>
+<li>大于1，打印所有子树的日志</li>
 </ol>
 <h3 id="参数调整"><a href="#参数调整" class="headerlink" title="参数调整"></a>参数调整</h3><h4 id="微调子树特征"><a href="#微调子树特征" class="headerlink" title="微调子树特征"></a>微调子树特征</h4><p>GBM模型是一个鲁棒性很强的模型，最够多的子树可以有效的避免过拟合。但是学习率越到，模型泛化能力越弱，越容易导致过拟合。<br>如果我们降低学习率并且增加子树，模型计算成本很大。有效的方法是。</p>
 <ol>
@@ -276,15 +343,9 @@
 <li>如果最优的值在20左右，我们可以降低学习率到0.05</li>
 <li>如果最优的值在200左右，为了更快的观测测试集效果，可以提高学习率</li>
 </ol>
-<h4 id="微调子树特征-1"><a href="#微调子树特征-1" class="headerlink" title="微调子树特征"></a>微调子树特征</h4><p>微调子树特征步骤</p>
-<ol>
-<li>微调max_depth 和 min_samples_split</li>
-<li>微调min_samples_leaf</li>
-<li>微调max_features<br>微调的顺序需要注意，对于结果影响越大的参数应该先调整。</li>
-</ol>
-<h4 id="微调subsample-并且降低学习率"><a href="#微调subsample-并且降低学习率" class="headerlink" title="微调subsample 并且降低学习率"></a>微调subsample 并且降低学习率</h4><p>降低学习率，相应提升独立子树个数</p>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/" target="_blank" rel="external">参考链接1</a></p>
-
+        
+          <a class="article-more-a" href="/2018/09/21/dbdt-param/#more">more >></a>
+        
       
 
       
@@ -946,77 +1007,6 @@
 
 
   
-    <article id="post-RpackgeRmysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/26/RpackgeRmysql/">R工具包-RMySQL和数据处理和加工相关包</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/26/RpackgeRmysql/" class="archive-article-date">
-  	<time datetime="2017-06-26T03:12:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>R要处理的数据保存在数据库中，应考虑R与MySQL之间的数据输入和输出问题，RMySQL包正是为了解决这些问题而推出的。</p>
-<h2 id="RMySQL"><a href="#RMySQL" class="headerlink" title="RMySQL"></a>RMySQL</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">install.packages(&quot;RMySQL&quot;)</div><div class="line">library(RMySQL)</div></pre></td></tr></table></figure>
-<h3 id="MySQL函数"><a href="#MySQL函数" class="headerlink" title="MySQL函数"></a>MySQL函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">RMySQL::dbConnect : 连接数据库</div><div class="line">RMySQL::dbConnect(</div><div class="line">	drv,</div><div class="line">	user,</div><div class="line">	password,</div><div class="line">	dbname,</div><div class="line">	host</div><div class="line">)</div><div class="line">返回连接对象</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/06/26/RpackgeRmysql/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">R</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/26/RpackgeRmysql/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1134,11 +1124,15 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">R</a>
+                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1154,19 +1148,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
+                <a href="javascript:void(0)" class="js-tag color2">R</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据操作</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1186,11 +1172,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+                <a href="javascript:void(0)" class="js-tag color5">数据操作</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1230,6 +1220,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
@@ -1239,10 +1233,6 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">gbm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1270,15 +1260,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">引用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">引用</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1302,11 +1292,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color3">reading</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">reading</a>
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1318,14 +1308,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">travel</a>
               </li>
              
@@ -1334,15 +1316,23 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">事务</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">PL/SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,6 +1345,10 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人工智能</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">xgb</a>
               </li>
             
             <div class="clearfix"></div>

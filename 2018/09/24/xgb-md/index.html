@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/4 | 小章鱼的blog</title>
+  <title>xgb模型 | 小章鱼的blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一直快乐的鱼">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小章鱼的blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/04/index.html">
+  <meta name="description" content="xgb目标函数推导xgb是一种梯度提升树模型，每次添加一棵树，模型整体效果加强。每个样本的预测值是每棵独立子树各叶子节点*权重的求和$$\hat{y} = \sum_j w_j x_ij$$目标函数是特定学习目标下的loss function$$l(y_i，\hat{y_i}）= (y_i-\hat{y_i})^2$$最优的函数解是在损失函数最小的时候$$F^\ast(\vec{x}) = arg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xgb模型">
+<meta property="og:url" content="http://yoursite.com/2018/09/24/xgb-md/index.html">
 <meta property="og:site_name" content="小章鱼的blog">
-<meta property="og:description" content="一直快乐的鱼">
+<meta property="og:description" content="xgb目标函数推导xgb是一种梯度提升树模型，每次添加一棵树，模型整体效果加强。每个样本的预测值是每棵独立子树各叶子节点*权重的求和$$\hat{y} = \sum_j w_j x_ij$$目标函数是特定学习目标下的loss function$$l(y_i，\hat{y_i}）= (y_i-\hat{y_i})^2$$最优的函数解是在损失函数最小的时候$$F^\ast(\vec{x}) = arg">
+<meta property="og:updated_time" content="2018-09-24T09:54:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小章鱼的blog">
-<meta name="twitter:description" content="一直快乐的鱼">
+<meta name="twitter:title" content="xgb模型">
+<meta name="twitter:description" content="xgb目标函数推导xgb是一种梯度提升树模型，每次添加一棵树，模型整体效果加强。每个样本的预测值是每棵独立子树各叶子节点*权重的求和$$\hat{y} = \sum_j w_j x_ij$$目标函数是特定学习目标下的loss function$$l(y_i，\hat{y_i}）= (y_i-\hat{y_i})^2$$最优的函数解是在损失函数最小的时候$$F^\ast(\vec{x}) = arg">
   
     <link rel="alternative" href="/atom.xml" title="小章鱼的blog" type="application/atom+xml">
   
@@ -149,60 +150,178 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-xgb-md" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/05/sshr/" class="archive-article-date">
-  	<time datetime="2018-04-05T02:04:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/05/sshr/">sshr</a>
+    <h1 class="article-title" itemprop="name">
+      xgb模型
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/09/24/xgb-md/" class="archive-article-date">
+  	<time datetime="2018-09-24T03:47:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="xgb目标函数推导"><a href="#xgb目标函数推导" class="headerlink" title="xgb目标函数推导"></a>xgb目标函数推导</h2><p>xgb是一种梯度提升树模型，每次添加一棵树，模型整体效果加强。<br>每个样本的预测值是每棵独立子树各叶子节点*权重的求和<br>$$\hat{y} = \sum_j w_j x_ij$$<br>目标函数是特定学习目标下的loss function<br>$$l(y_i，\hat{y_i}）= (y_i-\hat{y_i})^2$$<br>最优的函数解是在损失函数最小的时候<br>$$F^\ast(\vec{x}) = argminF[l(y, F(\vec{x})]$$<br>集成学习算法的表示方法：<br>$$\hat{y_i} = \sum_1^k f_k(x_i)$$<br>其中$f_k$表示k棵子树组成的xgb模型</p>
+<p>xgb集成学习，具体的表示如下：<br>$\hat{y_i}^{(0)} = 0$<br>$\hat{y_i}^{(1)} = f_1(x_i) = \hat{y_i}^{(0)} + f_1(x_i)$<br>$\hat{y_i}^{(2)} = f_i(x_i) + f_2(x_i) = \hat(y_i)^{(1)} + f_2(x_i)$<br>…<br>$\hat{y_i}^{(t)} = \sum_1^t f_k(x_i) = \hat{y_i}^{(t-1)} + f_t(x_i)$<br>其中$\hat{y_i}^{(t)}$表示第t轮的模型的预测，$\hat{y_i}^{(t-1)}$表示第t-1轮模型的预测值，$f_t(x_i)$表示加入一棵子树以后新的函数</p>
+<a id="more"></a>
+<p>对于xgb模型，这里还定义了正则化惩罚项，用来防止模型过拟合。<br>$$\Omega(f_t) = \gamma T + 1/2\lambda\sum_1^Tw_j^2$$<br>其中$\gamma$是模型复杂度的惩罚项，T表示叶子节点的个数，$1/2\lambda\sum_1^Tw_j^2$是L2正则表达式<br>添加正则化惩罚项后，目标函数为：<br>$$Obj^(t)=\sum_1^n l(y_i, \hat(y_i)^(t) + \sum_i^t \Omega(f_i))$$<br>$$Obj^(t)=\sum_1^n l(y_i, \hat(y_i)^(t-1) + f_t(x_i)) + \Omega f(t) + constant$$<br>其中$\hat(y_i)^(t-1)$表示原来t-1轮预测的值，$f_t(x_i)$表示第t轮新添加的树。这里的目标是找到$f_t(x_i)$，使得损失函数最小<br>$$Obj^(t)=\sum_1^n (y_i - (\hat(y_i)^(t-1) + f_t(x_i)))^2 + \Omega f(t) + constant$$<br>$$Obj^(t)=\sum_1^n [2(\hat(y_i)^(t-1) - y_i)f_t(x_i) + (f_t(x_i))^2]+ \Omega f(t) + constant$$<br>ps:这里$\hat(y_i)^(t-1) - y_i)$表示的是残差，不知道残差网络是不是借鉴这里的思想</p>
+<p>目标函数：<br>$$Obj^(t)=\sum_1^n l(y_i, \hat(y_i)^(t-1) + f_t(x_i)) + \Omega f(t) + constant$$<br>泰勒展开式：<br>$$f(x+\delta x) \simeq f(x) + f’\delta x + 1/2 f’’(x)\delta x^2$$<br>对目标函数进行泰勒展开，这里定义：<br>$g_i = \partial \hat{y}(t-1)l(y_i,y_i^(t-1))$ 和 $h_i = \partial^2 g(t-1) l(y_i,\hat{y}^(t-1))$<br>进行泰勒展开的时候，我们将$l(y_i, \hat(y_i)^(t-1)$视为x，将$f_t(x_i)$视为$\delta x$<br>$$Obj^(t)=\sum_1^n [l(y_i, \hat(y_i)^(t-1) + g_i f_t(x_i)) + 1/2 h_i f_t^2(x_i)]+ \Omega f(t) + constant$$<br>这里$(y_i, \hat(y_i)^(t-1)$是可以求出来的，因为在第t轮的时候，t-1轮已经训练好了，这个时候这些值都是可求的，那么可以移入到constant中<br>$$Obj^(t)=\sum_1^n [g_i f_t(x_i)) + 1/2 h_i f_t^2(x_i)]+ \gamma T + constant$$<br>其中$f_t(x_i) = \sum_1^n w_q(x_i)$<br>这里进行sum求和的时候，是对每个样本遍历的，为了计算方便可以转化为每个叶子节点遍历<br>$$Obj^(t)=\sum_1^T [\sum_i g_i w_j + 1/2 (\sum_i h_i + \lambda) w_j^2]+ \gamma T$$<br>在这里定义：<br>$G_j = \sum_i g_i$, $H_j = \sum_i h_i$<br>其中$G_j$表示各个节点一阶导求和，$H_j$表示二阶导求和<br>$$Obj^(t)=\sum_1^T [G_j w_j + 1/2(h_j + \lambda)w_j^2]+ \gamma T$$<br>求目标函数的最小值，求导为0:<br>$$\frac{\partial J(f_t)}{\partial w_j} = G_j + (H_j + \lambda) w_j = 0$$<br>$$w_j = - \frac{G_j}{h_j+\lambda}$$<br>将$w_j$代入目标函数<br>$$Obj = -1/2\sum_1^T \frac{G_j^2}{H_j+\lambda} + \gamma T$$</p>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="86" src="//music.163.com/outchain/player?type=2&id=5276807&auto=1&height=66"></iframe>
+
+<p>参考链接：<br><a href="http://www.mohu.org/info/symbols/symbols.htm" target="_blank" rel="external">latex</a><br><a href="https://blog.csdn.net/xxzhangx/article/details/52778539" target="_blank" rel="external">latex2</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">科学上网</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">xgb</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/09/24/xgb-md/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/09/21/dbdt-param/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">gbm_param</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="xgb-md" data-title="xgb模型" data-url="http://yoursite.com/2018/09/24/xgb-md/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"hexo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
   
 
-    
+
+
 
 
           </div>
@@ -225,8 +344,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
