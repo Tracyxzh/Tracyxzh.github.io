@@ -151,6 +151,189 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-dbdt-param" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/21/dbdt-param/">gbm_param</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/21/dbdt-param/" class="archive-article-date">
+  	<time datetime="2018-09-21T06:41:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>将GBM作为一个黑盒使用这是远远不够的，我们需要深入了解模型的细节，本次文章主要参考的是<a href="https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/" target="_blank" rel="external">参考链接1</a></p>
+<h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ol>
+<li>提升模型是如何工作的</li>
+<li>理解GBM模型的参数</li>
+<li>调整参数</li>
+</ol>
+<h3 id="提升模型是如何工作的"><a href="#提升模型是如何工作的" class="headerlink" title="提升模型是如何工作的"></a>提升模型是如何工作的</h3><p>提升模型的通俗的理解就是三个臭皮匠胜于诸葛亮，多个弱模型通过提升学习的方法，达到更优的效果。对于每个样本，每个弱模型的权重取决于前一个模型的输出；对于前一个模型输出错误的样本，本次弱模型会给予更高的权重，对于前一个模型输出正确的样本，本次弱模型会给予更低的权重。经过多轮迭代以后，模型的权重就确定了。</p>
+<h3 id="GBM模型的参数"><a href="#GBM模型的参数" class="headerlink" title="GBM模型的参数"></a>GBM模型的参数</h3><p>GBM模型的参数主要分为3类别</p>
+<ol>
+<li>子树相关特征：这些参数影响每一个子树</li>
+<li>提升参数：这些参数影响模型训练过程</li>
+<li>防止过拟合参数：这些参数防止模型过拟合</li>
+</ol>
+<h3 id="子树特征"><a href="#子树特征" class="headerlink" title="子树特征"></a>子树特征</h3><p>min_samples_split：</p>
+<ol>
+<li>每个节点观测的最小样本个数</li>
+<li>用来防治过拟合，这个值越小可想而知模型的泛化能力越弱</li>
+<li>值越大，模型可能会趋于欠拟合，这个值可以通过cv调整</li>
+</ol>
+<p>min_samples_leaf：</p>
+<ol>
+<li>每个叶子结点观测的最小样本个数</li>
+<li>和min_samples_split类似</li>
+<li>一般对于样本不均衡的问题，这个值选小一点，防止少样本在某个节点上少样本占大多数</li>
+</ol>
+<p>min_weight_fraction_leaf：</p>
+<ol>
+<li>每个节点观测的最小样本比例</li>
+<li>min_samples_leaf与min_weight_fraction_leaf：不能同时出现</li>
+</ol>
+<p>max_depth：</p>
+<ol>
+<li>树的深度</li>
+<li>用来防治过拟合，值越大泛化能力越弱</li>
+<li>需要使用cv方法调整</li>
+</ol>
+<p>max_leaf_nodes</p>
+<ol>
+<li>定义树最大的叶子结点树</li>
+<li>如果定义定义这个参数，gbm会忽略max_depth参数，因为如果树深度为n，最大叶子结点为2^n </li>
+</ol>
+<p>max_features</p>
+<ol>
+<li>特征越多越容易过拟合</li>
+<li>最大特征数</li>
+</ol>
+<h3 id="提升参数：这些参数影响模型训练过程"><a href="#提升参数：这些参数影响模型训练过程" class="headerlink" title="提升参数：这些参数影响模型训练过程"></a>提升参数：这些参数影响模型训练过程</h3><p>learning_rate：</p>
+<ol>
+<li>学习率，该参数决定每棵子树对最终输出的影响权重</li>
+<li>这个值越小，模型的鲁棒性越强，模型泛化能力越强</li>
+<li>值越小，需要的子树越多，模型计算成本越大</li>
+</ol>
+<p>n_estimators：</p>
+<ol>
+<li>独立子树的个数</li>
+<li>尽管gbm是一个鲁棒性很不错的模型，但是仍然可能越到过拟合的问题，这个参数需要使用cv方法调整</li>
+</ol>
+<p>subsample：</p>
+<ol>
+<li>每棵树观测样本比例，随机采样的</li>
+<li>为了减少方差，一般取小于1的数</li>
+<li>一般去～0.8左右的数，这个参数也可以使用cv方法进行微调</li>
+</ol>
+<h3 id="防止过拟合参数：这些参数防止模型过拟合"><a href="#防止过拟合参数：这些参数防止模型过拟合" class="headerlink" title="防止过拟合参数：这些参数防止模型过拟合"></a>防止过拟合参数：这些参数防止模型过拟合</h3><p>loss：</p>
+<ol>
+<li>损失函数</li>
+</ol>
+<p>init：</p>
+<ol>
+<li>模型初始化，感觉和迁移学习类似</li>
+</ol>
+<p>random_state：</p>
+<ol>
+<li>随机种子</li>
+</ol>
+<p>verbose</p>
+<ol>
+<li>训练过程中，模型输出信息</li>
+<li>0，不打印日志</li>
+<li>1，经过固定轮次打印日志</li>
+<li><blockquote>
+<p>1，打印所有子树的日志</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="参数调整"><a href="#参数调整" class="headerlink" title="参数调整"></a>参数调整</h3><h4 id="微调子树特征"><a href="#微调子树特征" class="headerlink" title="微调子树特征"></a>微调子树特征</h4><p>GBM模型是一个鲁棒性很强的模型，最够多的子树可以有效的避免过拟合。但是学习率越到，模型泛化能力越弱，越容易导致过拟合。<br>如果我们降低学习率并且增加子树，模型计算成本很大。有效的方法是。</p>
+<ol>
+<li>取一个相对高的学习率，一般取默认的0.1已经可以了，但是对于模型特定的问题，可以选择0.05-0.2之间的值</li>
+<li>选取最优的树的个数，一般选取40-70之间的数字。这里要选取一个能够快速查看测试集合的参数</li>
+<li>微调树的特征，用来确定最优的学习率和子树数目</li>
+<li>降低学习率，增加迭代次数，获取鲁棒性更强的模型</li>
+</ol>
+<h4 id="固定学习率和独立子树个数，微调提升参数"><a href="#固定学习率和独立子树个数，微调提升参数" class="headerlink" title="固定学习率和独立子树个数，微调提升参数"></a>固定学习率和独立子树个数，微调提升参数</h4><p>为了微调子树参数，需要初始化其他的参数</p>
+<ol>
+<li>min_samples_split = 500，这个参数一般取样本总数的0.5-1%。</li>
+<li>min_samples_leaf = 50，这个参数凭直觉选择，主要是防止过拟合。</li>
+<li>max_depth = 8，一般选择（5-8），8万行和49列可以选择8</li>
+<li>max_features = ‘sqrt’，经验法则选取</li>
+<li>subsample = 0.8，初始化时一般选取这个参数</li>
+</ol>
+<p>最优的n_estimators是50，有的时候并不是50，</p>
+<ol>
+<li>如果最优的值在20左右，我们可以降低学习率到0.05</li>
+<li>如果最优的值在200左右，为了更快的观测测试集效果，可以提高学习率</li>
+</ol>
+<h4 id="微调子树特征-1"><a href="#微调子树特征-1" class="headerlink" title="微调子树特征"></a>微调子树特征</h4><p>微调子树特征步骤</p>
+<ol>
+<li>微调max_depth 和 min_samples_split</li>
+<li>微调min_samples_leaf</li>
+<li>微调max_features<br>微调的顺序需要注意，对于结果影响越大的参数应该先调整。</li>
+</ol>
+<h4 id="微调subsample-并且降低学习率"><a href="#微调subsample-并且降低学习率" class="headerlink" title="微调subsample 并且降低学习率"></a>微调subsample 并且降低学习率</h4><p>降低学习率，相应提升独立子树个数</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python/" target="_blank" rel="external">参考链接1</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">调参数</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gbm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/21/dbdt-param/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-boosting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -207,10 +390,6 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">math</a>
         		</li>
       		 
@@ -220,6 +399,10 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AdaBoost</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -730,11 +913,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">logical</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">logical</a>
         		</li>
       		
 		</ul>
@@ -816,76 +999,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/26/RpackgeRmysql/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Rdata" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/25/Rdata/">R数据操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/25/Rdata/" class="archive-article-date">
-  	<time datetime="2017-06-25T13:54:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>R主要是基于向量处理数据，与使用for循环逐个处理单个数据的方式相比，基于向量的处理速度更快。</p>
-<h2 id="R中常用数据集"><a href="#R中常用数据集" class="headerlink" title="R中常用数据集"></a>R中常用数据集</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">数据集           |   含义</div><div class="line">AirPassenger    |    Box &amp; Jenkins航空公司1949～1960年每月国际航线乘客数 </div><div class="line">airquality      |    纽约市1973年5月～9月每日空气质量</div><div class="line">cars            |    20世纪20年代汽车速度对刹车距离的影响</div><div class="line">mtcars          |    1974年美国Motor Trend杂志上刊登的的32辆车的11个指标数据</div><div class="line">Titanic         |    “泰坦尼克”号生还者信息，包含舱室（一等舱、二等舱、三等舱）、性别、年龄、是否生还</div><div class="line">InsectSprays    |    使用6中杀虫剂后各自的害虫存活率</div><div class="line">Orange          |    橙数的种类、树龄、树围</div><div class="line">swiss           |    1888年前后，瑞士联邦47个法语州的生育率鱼社会经济指标</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/06/25/Rdata/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">R</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据操作</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/25/Rdata/">展开全文 >></a>
         </p>
       
 
@@ -1021,6 +1134,14 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">R</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小章鱼</a>
               </li>
              
@@ -1045,14 +1166,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">R</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据操作</a>
               </li>
              
@@ -1065,15 +1178,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">dplyr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1081,19 +1190,7 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Tree</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1109,11 +1206,39 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Tree</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">调参数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">gbm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1145,6 +1270,10 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">引用</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
               </li>
              
@@ -1153,19 +1282,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">引用</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">logical</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
