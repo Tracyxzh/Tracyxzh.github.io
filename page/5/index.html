@@ -151,34 +151,35 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-transction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-bug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/19/transction/">数据库学习笔记一</a>
+      <a class="article-title" href="/2017/02/22/bug/">开发中的bug</a>
     </h1>
   
 
         
-        <a href="/2017/02/19/transction/" class="archive-article-date">
-  	<time datetime="2017-02-19T14:45:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
+        <a href="/2017/02/22/bug/" class="archive-article-date">
+  	<time datetime="2017-02-22T05:40:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><p>连接是把不同表的记录连到一起的最普遍的方法。</p>
-<ul>
-<li>内连接：最普遍的连接类型，而且是最匀称的，因为它们要求构成连接的每一个部分的每个表匹配，不匹配的行将被排除。</li>
-<li>外连接：使用outer join关键字将两个表连接起来。外连接生成的结果集不仅包括符合链接条件的行数据，而且还包括左表（左外连接）、右表（右边连接时的表）或两边链接表（全外连接时的表）中所有的数据行。</li>
-</ul>
-<h2 id="合并查询"><a href="#合并查询" class="headerlink" title="合并查询"></a>合并查询</h2><p>合并查询结果是将多个select语句的查询结果合并在一起。因为某种情况下，需要将几个select语句查询出来的结果合并起来显示。合并查询结果使用union和union all关键字。union关键字是将所有的查询结果合并在一起，然后去除相同记录；而union all关键字则只是简单地将结果合并在一起。</p>
+        <p>问题：解决maven 更新慢的问题<br>系统：Mac<br>解决方向：使用阿里镜像<br>方法：</p>
+<ol>
+<li>cd /usr/local/Cellar/maven/3.3.9/libexec/conf(brew install maven 的路径)</li>
+<li>subl setting.xml (subl 在这里是使用sublime text 打开 文件 open -a )</li>
+<li>将下面代码替换setting.xml中的 mirrors    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;mirrors&gt;</div><div class="line">  &lt;!-- mirror</div><div class="line">   | Specifies a repository mirror site to use instead of a given repository. The repository that</div><div class="line">   | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used</div><div class="line">   | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.</div><div class="line">   |</div><div class="line">  &lt;mirror&gt;</div><div class="line">    &lt;id&gt;mirrorId&lt;/id&gt;</div><div class="line">    &lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;</div><div class="line">    &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</div><div class="line">    &lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;</div><div class="line">  &lt;/mirror&gt;</div><div class="line">   --&gt;</div><div class="line">  &lt;mirror&gt;</div><div class="line">    &lt;id&gt;alimaven&lt;/id&gt;</div><div class="line">    &lt;name&gt;aliyun maven&lt;/name&gt;</div><div class="line">    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</div><div class="line">    &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;       </div><div class="line">  &lt;/mirror&gt;</div><div class="line">&lt;/mirrors&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
         
-          <a class="article-more-a" href="/2017/02/19/transction/#more">more >></a>
+          <a class="article-more-a" href="/2017/02/22/bug/#more">more >></a>
         
       
 
@@ -196,15 +197,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事务处理</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
         		</li>
       		
 		</ul>
@@ -216,7 +213,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
+        			<a href="/categories/bug/" class="article-tag-list-link color4">bug</a>
         		</li>
       		
 		</ul>
@@ -225,7 +222,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/19/transction/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/02/22/bug/">展开全文 >></a>
         </p>
       
 
@@ -323,6 +320,99 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/02/19/mysql2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-transction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/19/transction/">数据库学习笔记一</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/19/transction/" class="archive-article-date">
+  	<time datetime="2017-02-19T14:45:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h2><p>连接是把不同表的记录连到一起的最普遍的方法。</p>
+<ul>
+<li>内连接：最普遍的连接类型，而且是最匀称的，因为它们要求构成连接的每一个部分的每个表匹配，不匹配的行将被排除。</li>
+<li>外连接：使用outer join关键字将两个表连接起来。外连接生成的结果集不仅包括符合链接条件的行数据，而且还包括左表（左外连接）、右表（右边连接时的表）或两边链接表（全外连接时的表）中所有的数据行。</li>
+</ul>
+<h2 id="合并查询"><a href="#合并查询" class="headerlink" title="合并查询"></a>合并查询</h2><p>合并查询结果是将多个select语句的查询结果合并在一起。因为某种情况下，需要将几个select语句查询出来的结果合并起来显示。合并查询结果使用union和union all关键字。union关键字是将所有的查询结果合并在一起，然后去除相同记录；而union all关键字则只是简单地将结果合并在一起。</p>
+        
+          <a class="article-more-a" href="/2017/02/19/transction/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事务处理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/数据库/" class="article-tag-list-link color4">数据库</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/19/transction/">展开全文 >></a>
         </p>
       
 
@@ -985,15 +1075,11 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
+                <a href="javascript:void(0)" class="js-tag color2">R</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1009,11 +1095,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">R</a>
+                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1037,6 +1127,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
@@ -1053,26 +1151,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">math</a>
               </li>
              
@@ -1082,6 +1160,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">AdaBoost</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1105,15 +1195,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">paper</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">fasion</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1133,11 +1223,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">logical</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">logical</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1161,19 +1251,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+                <a href="javascript:void(0)" class="js-tag color4">过拟合</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">travel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">thailand</a>
+                <a href="javascript:void(0)" class="js-tag color4">正则化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,7 +1267,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
+                <a href="javascript:void(0)" class="js-tag color2">travel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thailand</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,11 +1299,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">xgb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人工智能</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">xgb</a>
+                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
               </li>
             
             <div class="clearfix"></div>

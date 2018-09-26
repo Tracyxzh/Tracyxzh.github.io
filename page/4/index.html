@@ -151,6 +151,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hashmap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/07/hashmap/">hashmap 源码分析</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/07/hashmap/" class="archive-article-date">
+  	<time datetime="2017-03-07T13:49:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我发现了，写博客什么的最有意思的时候还是写前言来的开心。反正就是瞎嗨为什么动笔。为什么写这个是因为今天面试的时候问当了下面这段代码中构造函数中的参数数是干嘛用的，问这个问题我当时很羞愧，其实有的时候自己也会去问为什么有这么多构造函数，具体应用场景是什么，然后就是没有刨根问底的精神。现在我就来刨根问底下也不晚吧，😂</p>
+<h2 id="所问代码"><a href="#所问代码" class="headerlink" title="所问代码"></a>所问代码</h2><p>可以看到构造函数中都可以传入参数<br><img src="/2017/03/07/hashmap/gouzao.png" alt="HashMap构造函数"></p>
+<ul>
+<li>threshold：阈值，用于判断是否需要调整容量。threshold的值=”容量*加载因子”</li>
+<li>loadFactor：加载因子，通常设为0.75</li>
+</ul>
+<h2 id="HashMap源代码为例子分析"><a href="#HashMap源代码为例子分析" class="headerlink" title="HashMap源代码为例子分析"></a>HashMap源代码为例子分析</h2><p>Java.util.Hashtable类实现了JAVA中的哈希表，内部采用Node[]数组，每个Node均可作为链表的头，用来解决哈希碰撞。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>基于哈希表的 Map 接口的实现。</li>
+<li>允许使用 null 值和 null 键。</li>
+<li>此类不保证映射的顺序。</li>
+</ul>
+<h2 id="Node类-源码"><a href="#Node类-源码" class="headerlink" title="Node类 源码"></a>Node类 源码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;</div><div class="line">    final int hash;</div><div class="line">    final K key;</div><div class="line">    V value;</div><div class="line">    Node&lt;K,V&gt; next;</div><div class="line"></div><div class="line">    Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;</div><div class="line">        this.hash = hash;</div><div class="line">        this.key = key;</div><div class="line">        this.value = value;</div><div class="line">        this.next = next;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public final K getKey()        &#123; return key; &#125;</div><div class="line">    public final V getValue()      &#123; return value; &#125;</div><div class="line">    public final String toString() &#123; return key + &quot;=&quot; + value; &#125;</div><div class="line"></div><div class="line">    public final int hashCode() &#123;</div><div class="line">        return Objects.hashCode(key) ^ Objects.hashCode(value);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public final V setValue(V newValue) &#123;</div><div class="line">        V oldValue = value;</div><div class="line">        value = newValue;</div><div class="line">        return oldValue;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    public final boolean equals(Object o) &#123;</div><div class="line">        if (o == this)</div><div class="line">            return true;</div><div class="line">        if (o instanceof Map.Entry) &#123;</div><div class="line">            Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</div><div class="line">            if (Objects.equals(key, e.getKey()) &amp;&amp;</div><div class="line">                Objects.equals(value, e.getValue()))</div><div class="line">                return true;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/03/07/hashmap/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hash</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/07/hashmap/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hash" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -985,96 +1070,6 @@
 
 
   
-    <article id="post-bug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/bug/">开发中的bug</a>
-    </h1>
-  
-
-        
-        <a href="/2017/02/22/bug/" class="archive-article-date">
-  	<time datetime="2017-02-22T05:40:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题：解决maven 更新慢的问题<br>系统：Mac<br>解决方向：使用阿里镜像<br>方法：</p>
-<ol>
-<li>cd /usr/local/Cellar/maven/3.3.9/libexec/conf(brew install maven 的路径)</li>
-<li>subl setting.xml (subl 在这里是使用sublime text 打开 文件 open -a )</li>
-<li>将下面代码替换setting.xml中的 mirrors    <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;mirrors&gt;</div><div class="line">  &lt;!-- mirror</div><div class="line">   | Specifies a repository mirror site to use instead of a given repository. The repository that</div><div class="line">   | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used</div><div class="line">   | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.</div><div class="line">   |</div><div class="line">  &lt;mirror&gt;</div><div class="line">    &lt;id&gt;mirrorId&lt;/id&gt;</div><div class="line">    &lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;</div><div class="line">    &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</div><div class="line">    &lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;</div><div class="line">  &lt;/mirror&gt;</div><div class="line">   --&gt;</div><div class="line">  &lt;mirror&gt;</div><div class="line">    &lt;id&gt;alimaven&lt;/id&gt;</div><div class="line">    &lt;name&gt;aliyun maven&lt;/name&gt;</div><div class="line">    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</div><div class="line">    &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;       </div><div class="line">  &lt;/mirror&gt;</div><div class="line">&lt;/mirrors&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-        
-          <a class="article-more-a" href="/2017/02/22/bug/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小章鱼</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/bug/" class="article-tag-list-link color4">bug</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/02/22/bug/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1192,15 +1187,11 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
+                <a href="javascript:void(0)" class="js-tag color2">R</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,11 +1207,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">R</a>
+                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1244,6 +1239,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
@@ -1260,26 +1263,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">math</a>
               </li>
              
@@ -1289,6 +1272,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">AdaBoost</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1312,15 +1307,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">paper</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">fasion</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1340,11 +1335,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">logical</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">logical</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1368,19 +1363,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+                <a href="javascript:void(0)" class="js-tag color4">过拟合</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">travel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">thailand</a>
+                <a href="javascript:void(0)" class="js-tag color4">正则化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1392,7 +1379,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
+                <a href="javascript:void(0)" class="js-tag color2">travel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thailand</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1412,11 +1411,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">xgb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人工智能</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">xgb</a>
+                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
               </li>
             
             <div class="clearfix"></div>

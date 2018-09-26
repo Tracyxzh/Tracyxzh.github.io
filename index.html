@@ -151,6 +151,146 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-regularization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/25/regularization/">regularization</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/25/regularization/" class="archive-article-date">
+  	<time datetime="2018-09-25T04:56:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h2><p>过拟合的定义就是模型在训练集合中，表现的非常完美，但是可能是模型太过于复杂了，使得模型只关注于某些特定的数据。</p>
+<h2 id="L1和L2正则"><a href="#L1和L2正则" class="headerlink" title="L1和L2正则"></a>L1和L2正则</h2><p>这里先放一放，回头整理好了再发。。。。允许我拖更一下</p>
+<h2 id="强化学习方法汇总"><a href="#强化学习方法汇总" class="headerlink" title="强化学习方法汇总"></a>强化学习方法汇总</h2><ol>
+<li>Q Learning</li>
+<li>Policy Gradients</li>
+<li>Model-Based RL</li>
+<li>…</li>
+</ol>
+<h2 id="理解不理解环境"><a href="#理解不理解环境" class="headerlink" title="理解不理解环境"></a>理解不理解环境</h2><ol>
+<li>Model-Free RL 不理解</li>
+</ol>
+<ul>
+<li>Q Learning</li>
+<li>Sarsa</li>
+<li>Policy Gradients</li>
+</ul>
+<ol>
+<li>Model-Based RL 理解，根绝过往经验建立虚拟环境，多了一份想象力</li>
+</ol>
+<ul>
+<li>Q Learning</li>
+<li>Sarsa</li>
+<li>Policy Gradients</li>
+</ul>
+<h2 id="基于概率or基于价值"><a href="#基于概率or基于价值" class="headerlink" title="基于概率or基于价值"></a>基于概率or基于价值</h2><ol>
+<li>基于概率(Policy-Based RL)</li>
+</ol>
+<ul>
+<li>输出每个行为的概率，不一定选取概率最高的</li>
+<li>可以处理连续预测问题</li>
+<li>Policy Gradients</li>
+</ul>
+<ol>
+<li>基于价值(Value-Based RL)</li>
+</ol>
+<ul>
+<li>输出每个行为的价值，选取价值高的</li>
+<li>不可以处理连续预测问题</li>
+<li>Q Learning</li>
+<li>Sarsa</li>
+</ul>
+<p>两者结合可以采用Actor-Critic方法</p>
+<h2 id="更新方法"><a href="#更新方法" class="headerlink" title="更新方法"></a>更新方法</h2><ol>
+<li>回合更新(Monte-Carlo update)</li>
+</ol>
+<ul>
+<li>基础版Policy Gradients</li>
+<li>Monte-Carlo Learning</li>
+</ul>
+<ol>
+<li>单步更新(Templor-Difference update)</li>
+</ol>
+<ul>
+<li>Q Learning</li>
+<li>Sarsa</li>
+</ul>
+<h2 id="在线or离线学习"><a href="#在线or离线学习" class="headerlink" title="在线or离线学习"></a>在线or离线学习</h2><ol>
+<li>在线学习</li>
+</ol>
+<ul>
+<li>Sarsa</li>
+<li>Sarsa($\lambda$)</li>
+</ul>
+<ol>
+<li>离线学习</li>
+</ol>
+<ul>
+<li>Q Learning</li>
+<li>Deep Q Network</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">过拟合</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">正则化</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/25/regularization/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-xgb-param" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1089,77 +1229,6 @@
 
 
   
-    <article id="post-PIL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/07/PIL/">PIL rgb2hsv rgb2hls rgb2yuv</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/07/PIL/" class="archive-article-date">
-  	<time datetime="2017-07-07T03:55:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在参加一个招商图像的比赛，就准备用python做，这里记录下中间遇到的一些坑。软件安装配置的坑就不写了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">def rgb2hsv(img):</div><div class="line">    if isinstance(img, Image.Image):</div><div class="line">        r, g, b = img.split()</div><div class="line">        Hdat = []</div><div class="line">        Sdat = []</div><div class="line">        Vdat = []</div><div class="line">        for rd, gn, bl in zip(r.getdata(), g.getdata(), b.getdata()):</div><div class="line">            h, s, v = colorsys.rgb_to_hsv(rd / 255., gn / 255., bl / 255.)</div><div class="line">            # h, s, v = colorsys.rgb_to_yiq(rd / 255., gn / 255., bl / 255.)</div><div class="line">            # h, s, v = colorsys.rgb_to_hls(rd / 255., gn / 255., bl / 255.)</div><div class="line">            Hdat.append(int(h * 255.))</div><div class="line">            Sdat.append(int(s * 255.))</div><div class="line">            Vdat.append(int(v * 255.))</div><div class="line">        r.putdata(Hdat)</div><div class="line">        g.putdata(Sdat)</div><div class="line">        b.putdata(Vdat)</div><div class="line">        # return Image.merge(&apos;RGB&apos;, (r, g, b))</div><div class="line">        return r, g, b</div><div class="line">    else:</div><div class="line">        return None</div><div class="line"></div><div class="line"></div><div class="line">def rgb2hls(img):</div><div class="line">    if isinstance(img, Image.Image):</div><div class="line">        r, g, b = img.split()</div><div class="line">        Hdat = []</div><div class="line">        Sdat = []</div><div class="line">        Vdat = []</div><div class="line">        for rd, gn, bl in zip(r.getdata(), g.getdata(), b.getdata()):</div><div class="line">            h, l, s = colorsys.rgb_to_hls(rd / 255., gn / 255., bl / 255.)</div><div class="line">            # h, s, v = colorsys.rgb_to_yiq(rd / 255., gn / 255., bl / 255.)</div><div class="line">            # h, s, v = colorsys.rgb_to_hls(rd / 255., gn / 255., bl / 255.)</div><div class="line">            Hdat.append(int(h * 255.))</div><div class="line">            Sdat.append(int(l * 255.))</div><div class="line">            Vdat.append(int(s * 255.))</div><div class="line">        r.putdata(Hdat)</div><div class="line">        g.putdata(Sdat)</div><div class="line">        b.putdata(Vdat)</div><div class="line">        # return Image.merge(&apos;RGB&apos;, (r, g, b))</div><div class="line">        return r, g, b</div><div class="line">    else:</div><div class="line">        return None</div><div class="line"></div><div class="line"></div><div class="line">def rgb2yuv(img):</div><div class="line">    if isinstance(img, Image.Image):</div><div class="line">        r, g, b = img.split()</div><div class="line">        Ydat = []</div><div class="line">        Udat = []</div><div class="line">        Vdat = []</div><div class="line">        for rd, gn, bl in zip(r.getdata(), g.getdata(), b.getdata()):</div><div class="line">            y = 0.3 * rd + 0.59 * gn + 0.11 * bl</div><div class="line">            u = -0.15 * rd + -0.29 * gn + 0.44 * bl</div><div class="line">            v = 0.51 * rd + 0.52 * gn + -0.095 * bl</div><div class="line">            Ydat.append(int(y))</div><div class="line">            Udat.append(int(u))</div><div class="line">            Vdat.append(int(v))</div><div class="line">        r.putdata(Ydat)</div><div class="line">        g.putdata(Udat)</div><div class="line">        b.putdata(Vdat)</div><div class="line">        return r, g, b</div><div class="line">    else:</div><div class="line">        return None</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">pillow</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">图像处理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/07/PIL/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1277,15 +1346,11 @@ var _hmt = _hmt || [];
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
+                <a href="javascript:void(0)" class="js-tag color2">R</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
+                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1301,11 +1366,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">R</a>
+                <a href="javascript:void(0)" class="js-tag color2">pillow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">数据可视化</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图像处理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1329,6 +1398,14 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
@@ -1345,26 +1422,6 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">lubridate</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">pryr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">math</a>
               </li>
              
@@ -1374,6 +1431,18 @@ var _hmt = _hmt || [];
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">AdaBoost</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据挖掘</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1397,15 +1466,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">paper</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">fasion</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1425,11 +1494,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+                <a href="javascript:void(0)" class="js-tag color3">logical</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">logical</a>
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1453,19 +1522,11 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
+                <a href="javascript:void(0)" class="js-tag color4">过拟合</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">travel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">thailand</a>
+                <a href="javascript:void(0)" class="js-tag color4">正则化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1477,7 +1538,19 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
+                <a href="javascript:void(0)" class="js-tag color2">travel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">thailand</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">科学上网</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1497,11 +1570,15 @@ var _hmt = _hmt || [];
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">xgb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">人工智能</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">xgb</a>
+                <a href="javascript:void(0)" class="js-tag color5">事务处理</a>
               </li>
             
             <div class="clearfix"></div>
